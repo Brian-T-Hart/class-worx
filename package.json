@@ -1,0 +1,25 @@
+{
+  "name": "class-worx",
+  "version": "1.0.0",
+  "description": "A teacher tool to change the world one classroom at a time. Teachers will be able to gamify any class with ease.",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdoggincali/class-worx.git"
+  },
+  "author": "BOMN",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bdoggincali/class-worx/issues"
+  },
+  "homepage": "https://github.com/bdoggincali/class-worx#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "express-handlebars": "^3.0.0"
+  }
+}

@@ -1,0 +1,17 @@
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+body {
+    padding-top: 54px;
+}
+
+tr {
+    text-align: center
+}
+
+th {
+    text-align: center
+}

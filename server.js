@@ -2,6 +2,10 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var exphbs = require("express-handlebars");
+var passport = require("passport");
+var passportLocal = require("passport-local");
+var session = require('express-session');
+var bcrypt = require("bcrypt-nodejs");
 
 // Set up the Express App
 // ======================
@@ -35,7 +39,6 @@ var UIRoutes = require("./controller/user_interface/index.routes");
 var APIRoutes = require("./controller/api/api.routes");
 app.use("/", UIRoutes);
 app.use("/api", APIRoutes);
-
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

@@ -1,4 +1,4 @@
-// module.exports = function(sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
 var students = sequelize.define("students", {
     student_id: {
         type: DataTypes.INTEGER,

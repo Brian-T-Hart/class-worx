@@ -1,0 +1,75 @@
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+body {
+    padding-top: 54px;
+}
+
+tr {
+    text-align: center
+}
+
+th {
+    text-align: center
+}
+
+.student-row {
+    background: pink;
+}
+
+.test {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid black;
+}
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.grid {
+  background: #FDD;
+  background: hsla(45, 100%, 40%, 0.2);
+  max-width: 520px;
+}
+
+/* clearfix */
+.grid:after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+.item {
+  width: 40px;
+  height: 40px;
+  float: left;
+  background: #C09;
+  border: 4px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.3);
+}
+
+.item:hover {
+  border-color: white;
+  cursor: move;
+}
+
+.item.w2 { width:   80px; background: #9C0; }
+.item.h2 { height:  80px; background: #0C9; }
+.item.h4 { height: 160px; background: #C90; }
+.item.w4 { width:  160px; background: #90C; }
+
+.item.is-dragging,
+.item.is-positioning-post-drag {
+  border-color: white;
+  background: #09F;
+  z-index: 2;
+}
+
+button {
+  font-size: 20px;
+}

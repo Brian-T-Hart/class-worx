@@ -19,13 +19,6 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         len: [1]
       },
-      class_period: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
-      },
       class_score: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -41,8 +34,11 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
     classes.associate = function(models) {
-          classes.belongsTo(models.teachers),
+          classes.belongsTo(models.teachers, {
+            foreignKey: 'teacher_id'
+          }),
           classes.belongsToMany(models.schedules, {
+            foreignKey: 'schedule_period',
             onDelete: "CASCADE"
           });
         };

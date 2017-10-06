@@ -69,9 +69,6 @@ var students = sequelize.define("students", {
 students.associate = function(models) {
       students.hasMany(models.schedules, {
         onDelete: "CASCADE",
-        foreignKey: {
-            allowNull: false
-        }
       });
     };
 return students;

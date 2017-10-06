@@ -6,10 +6,28 @@ module.exports = function(sequelize, DataTypes) {
             autoIncrement: true,
             allowNull: false,
           },
-        
+          schedule_period: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+              len: [1,2]
+            }
+          },
+          schedule_startTime: {
+            type: DataTypes.STRING,
+            allowNull: true,
+          },
+          schedule_endTime: {
+            type: DataTypes.STRING,
+            allowNull: true,
+          },
     });
     schedules.associate = function(models) {
+          schedules.belongsTo(models.students, {
+            foreignKey: 'student_id'
+          })
           schedules.hasMany(models.classes, {
+            foreignKey: 'class_id',
             onDelete: "CASCADE"
           });
         };

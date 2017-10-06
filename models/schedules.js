@@ -27,6 +27,7 @@ module.exports = function(sequelize, DataTypes) {
             foreignKey: 'student_id'
           })
           schedules.hasMany(models.classes, {
+            foreignKey: 'class_id',
             onDelete: "CASCADE"
           });
         };

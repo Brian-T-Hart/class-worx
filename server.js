@@ -24,6 +24,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vmd.api+json"}));
 
+// Set up session
+// ==============
+app.use(session({secret: "SECRET" , resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+require('./passport.js');
+
 // Static Directory
 // ================
 app.use(express.static("public"));
@@ -36,10 +43,10 @@ app.set("view engine" , "handlebars");
 
 // Routes
 // ======
-var UIRoutes = require("./controller/user_interface/index.routes");
-// var APIRoutes = require("./controller/api/api.routes");
-app.use("/", UIRoutes);
-// app.use("/api", APIRoutes);
+var index = require("./controller/index.routes");
+var account = require("./controller/account.routes");
+app.use("/", index);
+app.use("/account", account);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

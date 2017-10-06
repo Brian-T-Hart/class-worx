@@ -42,10 +42,10 @@ module.exports = function(sequelize, DataTypes) {
         }
       },
     });
-    teachers.associate = function(models) {
-          teachers.hasMany(models.classes, {
-            onDelete: "CASCADE"
-          });
-        };
-    return classes;
+    // teachers.associate = function(models) {
+    //       teachers.hasMany(models.classes, {
+    //         onDelete: "CASCADE"
+    //       });
+    //     };
+    return schedules;
   };

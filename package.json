@@ -23,5 +23,8 @@
     "express-handlebars": "^3.0.0",
     "mysql2": "^1.4.2",
     "sequelize": "^4.13.1"
+  },
+  "devDependencies": {
+    "karma": "^1.7.1"
   }
 }

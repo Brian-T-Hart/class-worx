@@ -1,4 +1,4 @@
-// module.exports = function(sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
     var classes = sequelize.define("classes", {
         class_id: {
             type: DataTypes.INTEGER,
@@ -34,9 +34,15 @@
           len: [1]
         }
       },
-    });
+    class_active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    }
+  });
     classes.associate = function(models) {
-          classes.hasMany(models.students, {
+          classes.belongsTo(models.teachers),
+          classes.belongsToMany(models.schedules, {
             onDelete: "CASCADE"
           });
         };

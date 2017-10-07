@@ -1,6 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
 var students = sequelize.define("students", {
     student_id: {
+        primaryKey: true,
+        autoIncrement: true,
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -65,7 +67,8 @@ var students = sequelize.define("students", {
     allowNull: false,
     defaultValue: true
   }
-});
+},
+{ timestamps: false });
 students.associate = function(models) {
       students.hasMany(models.schedules, {
         onDelete: "CASCADE",

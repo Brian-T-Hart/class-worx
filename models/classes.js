@@ -1,10 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
     var classes = sequelize.define("classes", {
         class_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
+          type: DataTypes.INTEGER,
+          primaryKey: true,
+          autoIncrement: true,
+          allowNull: false,
             validate: {
-              len: [1,4]
+              len: [1,10]
             }
           },
         class_name: {
@@ -28,13 +30,15 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: true,
     }
-  });
+  },
+{ timestamps: false });
     classes.associate = function(models) {
           classes.belongsTo(models.teachers, {
-            foreignKey: 'teacher_id'
+            onDelete: "CASCADE"
+            // foreignKey: 'teacher_id'
           }),
           classes.hasMany(models.schedules, {
-            foreignKey: 'schedule_period',
+            // foreignKey: 'schedule_period',
             onDelete: "CASCADE"
           });
         };

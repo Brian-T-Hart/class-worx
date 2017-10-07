@@ -20,16 +20,22 @@ module.exports = function(sequelize, DataTypes) {
           schedule_endTime: {
             type: DataTypes.STRING,
             allowNull: true,
-          },
-    });
+          }
+    },
+  { timestamps: false });
     schedules.associate = function(models) {
           schedules.belongsTo(models.students, {
-            foreignKey: 'student_id'
+                onDelete: "CASCADE"
+            // foreignKey: 'student_id'
           })
-          schedules.hasMany(models.classes, {
-            foreignKey: 'class_id',
-            onDelete: "CASCADE"
-          });
+          // schedules.hasOne(models.classes, {
+          //   foreignKey: 'class_id',
+          //   onDelete: "CASCADE"
+          // });
         };
     return schedules;
+<<<<<<< HEAD
   };
+=======
+  };
+>>>>>>> 218101f9b8255d19da7748d98dd5a954ee3c9bc4

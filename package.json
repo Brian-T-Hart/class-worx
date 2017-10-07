@@ -27,7 +27,10 @@
     "mysql2": "^1.4.2",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+<<<<<<< HEAD
     "path": "^0.12.7",
+=======
+>>>>>>> 218101f9b8255d19da7748d98dd5a954ee3c9bc4
     "sequelize": "^4.13.1"
   },
   "devDependencies": {

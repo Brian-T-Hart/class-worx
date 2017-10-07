@@ -30,18 +30,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: true,
     }
-<<<<<<< HEAD
-  });
-    // classes.associate = function(models) {
-    //       classes.belongsTo(models.teachers, {
-    //         foreignKey: 'teacher_id'
-    //       }),
-    //       classes.belongsToMany(models.schedules, {
-    //         foreignKey: 'schedule_period',
-    //         onDelete: "CASCADE"
-    //       });
-    //     };
-=======
   },
 { timestamps: false });
     classes.associate = function(models) {
@@ -54,6 +42,5 @@ module.exports = function(sequelize, DataTypes) {
             onDelete: "CASCADE"
           });
         };
->>>>>>> 218101f9b8255d19da7748d98dd5a954ee3c9bc4
     return classes;
   };

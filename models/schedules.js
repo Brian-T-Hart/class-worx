@@ -34,8 +34,4 @@ module.exports = function(sequelize, DataTypes) {
           // });
         };
     return schedules;
-<<<<<<< HEAD
   };
-=======
-  };
->>>>>>> 218101f9b8255d19da7748d98dd5a954ee3c9bc4

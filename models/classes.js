@@ -4,27 +4,23 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
-              len: [1]
+              len: [1,4]
             }
           },
         class_name: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
+        allowNull: false
       },
       class_subject: {
         type: DataTypes.STRING,
         allowNull: false,
-        len: [1]
       },
       class_score: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0,
         validate: {
-          len: [1]
+          len: [1,10]
         }
       },
     class_active: {

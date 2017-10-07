@@ -73,3 +73,12 @@ body { font-family: sans-serif; }
 button {
   font-size: 20px;
 }
+
+.icon {
+ max-width: 80px; 
+}
+
+.centerBlock {
+  display: table;
+  margin: auto;
+}

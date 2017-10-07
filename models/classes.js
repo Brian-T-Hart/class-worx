@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
           classes.belongsTo(models.teachers, {
             foreignKey: 'teacher_id'
           }),
-          classes.belongsToMany(models.schedules, {
+          classes.hasMany(models.schedules, {
             foreignKey: 'schedule_period',
             onDelete: "CASCADE"
           });

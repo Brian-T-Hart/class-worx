@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
           schedules.belongsTo(models.students, {
             foreignKey: 'student_id'
           })
-          schedules.belongsTo(models.classes, {
+          schedules.hasOne(models.classes, {
             foreignKey: 'class_id',
             onDelete: "CASCADE"
           });

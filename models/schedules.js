@@ -6,46 +6,32 @@ module.exports = function(sequelize, DataTypes) {
             autoIncrement: true,
             allowNull: false,
           },
-        teacher_lastName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
-      },
-        teacher_firstName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
-      },
-        teacher_email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            isEmail: true,
-        }
-      },
-      teacher_userName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [6]
-        }
-      },
-      teacher_password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [6]
-        }
-      },
-    });
-    teachers.associate = function(models) {
-          teachers.hasMany(models.classes, {
-            onDelete: "CASCADE"
-          });
+          schedule_period: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+              len: [1,2]
+            }
+          },
+          schedule_startTime: {
+            type: DataTypes.STRING,
+            allowNull: true,
+          },
+          schedule_endTime: {
+            type: DataTypes.STRING,
+            allowNull: true,
+          }
+    },
+  { timestamps: false });
+    schedules.associate = function(models) {
+          schedules.belongsTo(models.students, {
+                onDelete: "CASCADE"
+            // foreignKey: 'student_id'
+          })
+          // schedules.hasOne(models.classes, {
+          //   foreignKey: 'class_id',
+          //   onDelete: "CASCADE"
+          // });
         };
-    return classes;
+    return schedules;
   };

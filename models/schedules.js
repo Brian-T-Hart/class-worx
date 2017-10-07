@@ -26,10 +26,10 @@ module.exports = function(sequelize, DataTypes) {
           schedules.belongsTo(models.students, {
             foreignKey: 'student_id'
           })
-          schedules.hasMany(models.classes, {
+          schedules.belongsTo(models.classes, {
             foreignKey: 'class_id',
             onDelete: "CASCADE"
           });
         };
-    return classes;
+    return schedules;
   };

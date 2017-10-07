@@ -8,11 +8,7 @@ body {
     padding-top: 54px;
 }
 
-tr {
-    text-align: center
-}
-
-th {
+tr, th {
     text-align: center
 }
 
@@ -24,7 +20,7 @@ th {
     padding-top: .75rem;
     padding-bottom: .75rem;
     background-color: rgba(86,61,124,.15);
-    border: 1px solid black;
+    outline: 1px solid black;
 }
 
 * { box-sizing: border-box; }
@@ -81,4 +77,8 @@ button {
 .centerBlock {
   display: table;
   margin: auto;
+}
+
+#myTab, #nav-home, #nav-profile {
+  max-width: 500px;
 }

@@ -27,24 +27,24 @@
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <form class="form-signin">
+                <form class="form-signin" action="/account/login" method="post">
                     <h2 class="form-signin-heading">Please Log In</h2>
                     <label for="loginEmail" class="sr-only">Email address</label>
-                    <input id="loginEmail" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
+                    <input name="username" id="loginEmail" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
                     <label for="loginPassword" class="sr-only">Password</label>
-                    <input id="loginPassword" class="form-control" placeholder="Password" required="" type="password">
+                    <input name="password" id="loginPassword" class="form-control" placeholder="Password" required="" type="password">
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
                 </form>
 
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <form class="form-signin">
+                <form class="form-signin" action="/account/signup" method="post">
                     <h2 class="form-signin-heading">Please Sign Up</h2>
                     <label for="registerEmail" class="sr-only">Email address</label>
-                    <input id="registerEmail" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
+                    <input type="text" name="username" id="registerEmail" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
                     <label for="registerPassword" class="sr-only">Password</label>
-                    <input id="registerPassword" class="form-control" placeholder="Password" required="" type="password">
-                    <input id="registerPassword" class="form-control" placeholder="Repeat Password" required="" type="password">
+                    <input type="text" name="password" id="registerPassword" class="form-control" placeholder="Password" required="" type="password">
+                    <input type="text" name="registerPassword2" id="registerPassword2" class="form-control" placeholder="Repeat Password" required="" type="password">
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
                 </form>
             </div>

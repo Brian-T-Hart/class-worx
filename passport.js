@@ -9,8 +9,8 @@ const authenticate = (username, password, done) =>{
           teacher_email: username,
         }
       }).then(teacher => {
-        // if (!teacher || !bcrypt.compareSync(password, teacher.teacher_password)) {
-        if (!teacher || password !== teacher.teacher_password) {
+        if (!teacher || !bcrypt.compareSync(password, teacher.teacher_password)) {
+        //if (!teacher || password !== teacher.teacher_password) {
           console.log("failed to login, but sucess in getting this far.")
             return done(null, false, {message: 'invalid username/or and password combination'});
         }
@@ -20,8 +20,30 @@ const authenticate = (username, password, done) =>{
       .catch(done) // pass the error back
 }
 
-const register = (req, email, password, done) => {
+const register = (req, username, password, done) => {
     //sequelize?
+    db.teachers.find({
+        where:{
+            teacher_email: username,
+        }
+    })
+    .then(user => {
+      if (user) {
+        return done(null, false, { message: 'an account with that email has already been created' });
+      }
+      if (password !== req.body.registerPassword2) {
+        return done(null, false, { message: `passwords don't match` });
+      }
+      db.teachers.create({
+        teacher_firstName: "TEST",
+        teacher_lastName: "TEST",
+        teacher_userName: "USER NAME",
+        teacher_email: username,
+        teacher_password: bcrypt.hashSync(password)
+      }).then(function(){
+          done(null, user);
+        })
+    })
     
 }
 

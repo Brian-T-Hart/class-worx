@@ -39,10 +39,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       teacher_password: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [6,20]
-        }
+        allowNull: false
       },
     });
     teachers.associate = function(models) {

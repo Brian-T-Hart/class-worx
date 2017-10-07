@@ -1,4 +1,4 @@
- module.exports = function(sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
     var teachers = sequelize.define("teachers", {
         teacher_id: {
             type: DataTypes.INTEGER,
@@ -6,21 +6,21 @@
             autoIncrement: true,
             allowNull: false,
             validate: {
-              len: [1]
+              len: [1,4]
             }
           },
         teacher_lastName: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1]
+          len: [1,50]
         }
       },
         teacher_firstName: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1]
+          len: [1,50]
         }
       },
         teacher_email: {
@@ -34,14 +34,14 @@
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1]
+          len: [4,12]
         }
       },
       teacher_password: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [1]
+          len: [6,20]
         }
       },
     });

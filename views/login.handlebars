@@ -30,15 +30,15 @@
                 <form class="form-signin" action="/account/login" method='post'>
                     <h2 class="form-signin-heading">Please Log In</h2>
                     <label for="loginEmail" class="sr-only">Email address</label>
-                    <input id="loginEmail" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
+                    <input name="username" id="loginEmail" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
                     <label for="loginPassword" class="sr-only">Password</label>
-                    <input id="loginPassword" class="form-control" placeholder="Password" required="" type="password">
+                    <input name="passport" id="loginPassword" class="form-control" placeholder="Password" required="" type="password">
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
                 </form>
 
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <form class="form-signin">
+                <form class="form-signin" action="/account/signup" method='post'>
                     <h2 class="form-signin-heading">Please Sign Up</h2>
                     <label for="registerEmail" class="sr-only">Email address</label>
                     <input id="registerEmail" class="form-control" placeholder="Email address" required="" autofocus="" type="email">

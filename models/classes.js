@@ -29,14 +29,14 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: true,
     }
   });
-    classes.associate = function(models) {
-          classes.belongsTo(models.teachers, {
-            foreignKey: 'teacher_id'
-          }),
-          classes.belongsToMany(models.schedules, {
-            foreignKey: 'schedule_period',
-            onDelete: "CASCADE"
-          });
-        };
+    // classes.associate = function(models) {
+    //       classes.belongsTo(models.teachers, {
+    //         foreignKey: 'teacher_id'
+    //       }),
+    //       classes.belongsToMany(models.schedules, {
+    //         foreignKey: 'schedule_period',
+    //         onDelete: "CASCADE"
+    //       });
+    //     };
     return classes;
   };

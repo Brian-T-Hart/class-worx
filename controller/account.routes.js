@@ -10,9 +10,10 @@ router.get('/login' , (req, res, next) => {
     res.render(path.join(__dirname, "../views/login.handlebars"));
 });
 
-router.post('/login' , passport.authenticate('local', {
+
+router.post('/login', passport.authenticate('local', {
     successRedirect: '/success',
     failureRedirect: '/failure'
-}));
+}))
 
 module.exports = router;

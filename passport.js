@@ -4,7 +4,6 @@ const LocalStrategy = require('passport-local').Strategy
 var db = require('./models');
 
 const authenticate = (username, password, done) =>{
-    console.log("You got here!");
     db.teachers.find({
         where:{
           teacher_email: username,
@@ -23,6 +22,7 @@ const authenticate = (username, password, done) =>{
 
 const register = (req, email, password, done) => {
     //sequelize?
+    
 }
 
 passport.use(new LocalStrategy(authenticate));
@@ -33,5 +33,13 @@ passport.serializeUser((teachers, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-    //sequelize?
+    db.teachers.find({
+        where:{
+            teacher_id: id,
+        }
+      })
+      .then(teacher => {
+          done(null, teacher)
+      })
+      .catch(done)
 })

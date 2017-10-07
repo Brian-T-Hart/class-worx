@@ -3,10 +3,11 @@ var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var exphbs = require("express-handlebars");
 var passport = require("passport");
-var passportLocal = require("passport-local");
 var session = require('express-session');
 var bcrypt = require("bcrypt-nodejs");
 var path = require("path");
+
+require('./passport.js');
 
 // Set up the Express App
 // ======================
@@ -29,7 +30,6 @@ app.use(bodyParser.json({ type: "application/vmd.api+json"}));
 app.use(session({secret: "SECRET" , resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
-require('./passport.js');
 
 // Static Directory
 // ================

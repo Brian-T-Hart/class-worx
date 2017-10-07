@@ -40,11 +40,9 @@ module.exports = function(sequelize, DataTypes) {
       teacher_password: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          len: [6,20]
-        }
       },
-    });
+    },
+  { timestamps: false });
     teachers.associate = function(models) {
           teachers.hasMany(models.classes, {
             onDelete: "CASCADE"

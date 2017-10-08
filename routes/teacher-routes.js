@@ -20,7 +20,7 @@ module.exports = function(app) {
 
   // POST route for creating a new teacher
   app.post("/api/newTeacher", function(req, res) {
-    db.classes.create({
+    db.teachers.create({
       teacher_lastName: req.body.lastName,
       teacher_firstName: req.body.firstName,
       teacher_email: req.body.email,

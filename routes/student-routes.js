@@ -5,11 +5,11 @@ var db = require("../models");
 module.exports = function(app) {
 
 
-  // Get route for retrieving a teacher
+  // Get route for retrieving a student
   app.get("/api/students/:id", function(req, res) {
-    db.students.findAll({
+    db.students.findOne({
       where: {
-        teacher_id: req.params.id
+        student_id: req.params.id
       }
     }).then(function(result) {
       res.json(result);
@@ -17,7 +17,7 @@ module.exports = function(app) {
     });
   });
 
-  // POST route for creating a new teacher
+  // POST route for creating a new student
   app.post("/api/newStudent", function(req, res) {
     db.students.create({
       student_lastName: req.body.lastName,
@@ -30,14 +30,14 @@ module.exports = function(app) {
     }).then(function(result) {
       res.json(result);
       // console.log(result);
-    });
+    })
   });
 
   // DELETE route for deleting a teacher
   app.delete("/api/posts/:id", function(req, res) {
-    db.teacher.destroy({
+    db.student.destroy({
       where: {
-        teacher_id: req.params.id
+        student_id: req.params.id
       }
     }).then(function(result) {
       res.json(result);
@@ -47,12 +47,12 @@ module.exports = function(app) {
 
 
   // PUT route for updating teacher info
-  app.put("/api/updateTeacher", function(req, res) {
-    db.teacher.update(
+  app.put("/api/updateStudent", function(req, res) {
+    db.students.update(
       req.body,
       {
         where: {
-          teacher_id: req.body.id
+          student_id: req.body.id
         }
       }).then(function(result) {
         res.json(result);

@@ -21,4 +21,10 @@ router.post('/signup', passport.authenticate('local-register', {
     failureRedirect: '/account/login'
 }))
 
+router.get('/logout', (req, res, next) => {
+    req.session.destroy(err => {
+      res.redirect('/account/login')
+    })
+  })
+
 module.exports = router;

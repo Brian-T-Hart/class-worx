@@ -3,10 +3,10 @@ var bcrypt = require('bcrypt-nodejs');
 const LocalStrategy = require('passport-local').Strategy
 var db = require('./models');
 
-const authenticate = (username, password, done) =>{
+const authenticate = (email, password, done) =>{
     db.teachers.find({
         where:{
-          teacher_email: username,
+          teacher_email: email,
         }
       }).then(teacher => {
         if (!teacher || !bcrypt.compareSync(password, teacher.teacher_password)) {
@@ -20,25 +20,25 @@ const authenticate = (username, password, done) =>{
       .catch(done) // pass the error back
 }
 
-const register = (req, username, password, done) => {
+const register = (req, email, password, done) => {
     //sequelize?
     db.teachers.find({
         where:{
-            teacher_email: username,
+            teacher_email: req.body.email,
         }
     })
     .then(user => {
       if (user) {
         return done(null, false, { message: 'an account with that email has already been created' });
       }
-      if (password !== req.body.registerPassword2) {
+      if (password !== req.body.password2) {
         return done(null, false, { message: `passwords don't match` });
       }
       db.teachers.create({
-        teacher_firstName: "TEST",
-        teacher_lastName: "TEST",
-        teacher_userName: "USER NAME",
-        teacher_email: username,
+        teacher_firstName: req.body.firstName,
+        teacher_lastName: req.body.lastName,
+        teacher_userName: req.body.username,
+        teacher_email: req.body.email,
         teacher_password: bcrypt.hashSync(password)
       }).then(function(){
           done(null, user);

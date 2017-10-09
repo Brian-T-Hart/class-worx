@@ -29,15 +29,15 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Students
+                        <a class="nav-link" href="/students">Students
                 <span class="sr-only">(current)</span>
               </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">USERNAME</a>
+                        <a class="nav-link" href="#">{{classes.0.teacher.teacher_userName}}</a>
                     </li>
                     <li id="logoff">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="/account/logout">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -66,33 +66,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Period 1</td>
-                                <td>Algebra</td>
-                                <td>1000</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary" action="/class/:id" method="get">View Class</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Period 2</td>
-                                <td>Science</td>
-                                <td>1500</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary" action="/class/:id" method="get">View Class</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Period 3</td>
-                                <td>Scuba Diving</td>
-                                <td>500</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary" action="/class/:id" method="get">View Class</button>
-                                </td>
-                            </tr>
+                            {{#each classes}}
+                                {{#if this.class_active}}
+                                    <tr>
+                                        <td>{{this.class_name}}</td>
+                                        <td>{{this.class_subject}}</td>
+                                        <td>{{this.class_score}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary" action="/class/"+{{this.class_id}} method="get">View Class</button>
+                                        </td>
+                                    </tr>
+                                {{/if}}
+                            {{/each}}
                         </tbody>
                     </table>
-                    <!-- end placeholder element-->
                 </div>
             </div>
         </div>

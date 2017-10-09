@@ -31,6 +31,22 @@ router.get('/dashboard', (req, res, next) =>{
     }
 });
 
+router.post('/dashboard', (req, res, next) =>{
+    if(req.isAuthenticated()){
+        db.classes.create({
+            class_name: req.body.className,
+            class_subject: req.body.classSubject,
+            class_score: 0,
+            class_active: true,
+            teacherTeacherId: req.user.teacher_id
+        }).then(function(results){
+            res.redirect('/dashboard');
+        });
+    }else{
+        res.redirect("/account/login");        
+    }
+})
+
 router.get('/class/:id', (req, res, next) =>{
     if(req.isAuthenticated()){
         //go to dashboard automatically

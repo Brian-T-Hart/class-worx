@@ -45,15 +45,21 @@ router.get('/students', (req,res,next) => {
     if(req.isAuthenticated()){
         db.students.findAll({
             include:[{
+                model: db.classes,
+            }],
+            include:[{
+                model: db.schedules,
+            }],
+            include:[{
                 model: db.teachers,
-                attribute: [['name', 'teacher_userName']] // should this be techer_userName, varchar;
             }],
             where:{
                 teacherTeacherId: req.user.teacher_id,
             }
         }).then(function(results){
-            var studentList = {students: results}
-            res.render('class', studentList);
+            res.json(results);
+            // var studentList = {students: results}
+            // res.render('class', studentList);
         });
     }else{
         res.redirect("/account/login");

@@ -20,18 +20,18 @@ module.exports = function(sequelize, DataTypes) {
           schedule_endTime: {
             type: DataTypes.STRING,
             allowNull: true,
-          }
+          },
     },
   { timestamps: false });
     schedules.associate = function(models) {
           schedules.belongsTo(models.students, {
-                onDelete: "CASCADE"
-            // foreignKey: 'student_id'
+              onDelete: "CASCADE",
+              foreignKey: 'student_id'
           })
-          // schedules.hasOne(models.classes, {
-          //   foreignKey: 'class_id',
-          //   onDelete: "CASCADE"
-          // });
+          schedules.belongsTo(models.classes, {
+            foreignKey: 'class_id',
+            onDelete: "CASCADE"
+          });
         };
     return schedules;
   };

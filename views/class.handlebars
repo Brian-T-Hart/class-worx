@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Standard Meta -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <!--Bootstrap 4.00 beta link -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/assets/css/style.css" type="text/css" />
-    <!-- Site Properties -->
-    <title>Class Worx</title>
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-</head>
-
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" id="home-button" href="#">Home</a>
+            <a class="navbar-brand" id="home-button" href="/dashboard">Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,12 +10,12 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Students
+                        <a class="nav-link" href="/students">Students
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{teacher.teacher_userName}}</a>
+                        <a class="nav-link" href="#">{{students.0.schedules.0.class.teacher.teacher_userName}}</a>
                     </li>
                     <li id="logoff">
                         <a class="nav-link" href="/account/logout">Logout</a>
@@ -67,146 +49,71 @@
                                 <th>Name</th>
                                 <th>Points</th>
                                 <th>Hall Pass</th>
-                                <th>Editable Custom Variable</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- begin placeholder row 1 element-->
-                            <tr>
-                                <td>
-                                    <!-- Trigger the modal with a button -->
-                                    <button type="button" data-toggle="modal" data-target="#studentModal1">
-                                        <img class="icon img-responsive" src="../public/assets/images/portrait.png" alt="">
-                                    </button>
+                            {{#each students}}
+                                {{#if this.student_active}}
+                                <tr>
+                                    <td>
+                                        <!-- Trigger the modal with a button -->
+                                        <button type="button" data-toggle="modal" data-target="#studentModal"+{{this.student_id}}>
+                                            <img class="icon img-responsive" src="/assets/images/portrait.png" alt="">
+                                        </button>
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="studentModal1" role="dialog">
-                                        <div class="modal-dialog">
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="studentModal" + {{this.student_id}} role="dialog">
+                                            <div class="modal-dialog">
 
-                                            <!-- Modal content-->
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title">{{student.student_firstName}} &nbsp; {{student.student_lastName}}</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <img class="img-responsive" src="../public/assets/images/portrait.png" alt="">
-                                                    <p id="studentGender">{{student.student_gender}}</p>
-                                                    <p id="studentGrade">{{student.student_gradeLevel}}</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">{{this.student_firstName}} &nbsp; {{this.student_lastName}}</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img class="img-responsive" src="/assets/images/portrait.png" alt="">
+                                                        <p id="studentGender">Gender: {{this.student_gender}}</p>
+                                                        <p id="studentGrade">Grade: {{this.student_gradeLevel}}</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>{{student.student_firstName}} &nbsp; {{student.student_lastName}}</td>
-                                <td>
-                                    <h4 id="student-points">
-                                        10000
-                                    </h4>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary">+1</button>
-                                        <button type="button" class="btn btn-secondary">+10</button>
-                                        <button type="button" class="btn btn-secondary">-1</button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 id="hall-pass">
-                                        Hall Passes: 2
-                                    </h4>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary">+1</button>
-                                        <button type="button" class="btn btn-secondary">-1</button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 id="custom-variable">
-                                        Editable Custom Variable : 19
-                                    </h4>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary">+1</button>
-                                        <button type="button" class="btn btn-secondary">-1</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!--end Placeholder row1-->
-
-                            <!--begin Placeholder row2-->
-                            <tr>
-                                <td>
-                                    <!-- Trigger the modal with a button -->
-                                    <button type="button" data-toggle="modal" data-target="#studentModal2">
-                                        <img class="icon img-responsive" src="../public/assets/images/portrait.png" alt="">
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="studentModal2" role="dialog">
-                                        <div class="modal-dialog">
-
-                                            <!-- Modal content-->
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title">Sleve McDichael</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <img class="img-responsive" src="../public/assets/images/portrait.png" alt="">
-                                                    <p id="studentGender">{{student.student_gender}}</p>
-                                                    <p id="studentGrade">{{student.student_gradeLevel}}</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
+                                    </td>
+                                    <td>{{this.student_firstName}} &nbsp; {{this.student_lastName}}</td>
+                                    <td>
+                                        <h4 id="student-points">
+                                            Score: {{this.student_score}}
+                                        </h4>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button type="button" class="btn btn-secondary">+1</button>
+                                            <button type="button" class="btn btn-secondary">+10</button>
+                                            <button type="button" class="btn btn-secondary">-1</button>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>{{student.student_firstName}} &nbsp; {{student.student_lastName}}</td>
-                                <td>
-                                    <h4 id="student-points">
-                                        1400
-                                    </h4>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary">+1</button>
-                                        <button type="button" class="btn btn-secondary">+10</button>
-                                        <button type="button" class="btn btn-secondary">-1</button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 id="hall-pass">
-                                        Hall Passes: 1
-                                    </h4>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary">+1</button>
-                                        <button type="button" class="btn btn-secondary">-1</button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 id="custom-variable">
-                                        Editable Custom Variable : 14
-                                    </h4>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary">+1</button>
-                                        <button type="button" class="btn btn-secondary">-1</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!--end Placeholder row1-->
+                                    </td>
+                                    <td>
+                                        <h4 id="hall-pass">
+                                            Hall Passes: {{this.student_hallPass}}
+                                        </h4>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button type="button" class="btn btn-secondary">+1</button>
+                                            <button type="button" class="btn btn-secondary">-1</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!--end Placeholder row1-->
+                                {{/if}}
+                            {{/each}}
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -73,7 +73,6 @@ router.get('/students', (req,res,next) => {
                 }],
             }],
         }).then(function(results){
-            // res.json(results);
             var studentList = {students: results}
             res.render('class', studentList);
         });

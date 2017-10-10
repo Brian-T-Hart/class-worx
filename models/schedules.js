@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
             autoIncrement: true,
             allowNull: false,
           },
+<<<<<<< HEAD
           schedule_period: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -13,11 +14,17 @@ module.exports = function(sequelize, DataTypes) {
               len: [1,2]
             }
           },
+=======
+>>>>>>> master
     },
   { timestamps: false });
     schedules.associate = function(models) {
           schedules.belongsTo(models.students, {
+<<<<<<< HEAD
               onDelete: "CASCADE",
+=======
+                onDelete: "CASCADE"
+>>>>>>> master
           })
           schedules.belongsTo(models.classes, {
             onDelete: "CASCADE"

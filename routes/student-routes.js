@@ -4,66 +4,59 @@ var db = require("../models");
 // Routes
 module.exports = function(app) {
 
-  // GET route for getting all of the posts
-  app.get("/api/teachers", function(req, res) {
-    var query = {};
-    if (req.query.teacher_id) {
-      query.teacher_id = req.query.teacher_id;
-    }
-    // Here we add an "include" property to our options in our findAll query
-    // We set the value to an array of the models we want to include in a left outer join
-    // In this case, just db.Author
-    db.teachers.findAll({
-      where: query,
-      include: [db.teachers]
-    }).then(function(results) {
-      res.json(results);
-    });
-  });
 
-  // Get route for retrieving a single post
-  app.get("/api/teachers/:id", function(req, res) {
-    // Here we add an "include" property to our options in our findOne query
-    // We set the value to an array of the models we want to include in a left outer join
-    // In this case, just db.Author
-    db.teachers.findOne({
+  // Get route for retrieving a student
+  app.get("/api/students/:id", function(req, res) {
+    db.students.findOne({
       where: {
-        id: req.params.id
-      },
-      include: [db.classes]
+        student_id: req.params.id
+      }
     }).then(function(result) {
       res.json(result);
+      // console.log(result);
     });
   });
 
-  // POST route for creating a new teacher
-  app.post("/api/posts", function(req, res) {
-    db.teachers.create(req.body).then(function(result) {
+  // POST route for creating a new student
+  app.post("/api/newStudent", function(req, res) {
+    db.students.create({
+      student_lastName: req.body.lastName,
+      student_firstName: req.body.firstName,
+      student_email: req.body.email,
+      student_phone: req.body.phone,
+      student_image: req.body.image,
+      student_gender: req.body.gender,
+      student_gradeLevel: req.body.grade
+    }).then(function(result) {
       res.json(result);
-    });
+      // console.log(result);
+    })
   });
 
   // DELETE route for deleting a teacher
   app.delete("/api/posts/:id", function(req, res) {
-    db.teacher.destroy({
+    db.student.destroy({
       where: {
-        teacher_id: req.params.id
+        student_id: req.params.id
       }
     }).then(function(result) {
       res.json(result);
+      // console.log(result);
     });
   });
 
-  // PUT route for updating posts
-  app.put("/api/posts", function(req, res) {
-    db.teacher.update(
+
+  // PUT route for updating teacher info
+  app.put("/api/updateStudent", function(req, res) {
+    db.students.update(
       req.body,
       {
         where: {
-          teacher_id: req.body.id
+          student_id: req.body.id
         }
       }).then(function(result) {
         res.json(result);
+        // console.log(result);
       });
   });
 };

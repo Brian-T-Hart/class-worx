@@ -87,13 +87,12 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title">Sleve McDichael</h4>
+                                                    <h4 class="modal-title">{{student.student_firstName}} &nbsp; {{student.student_lastName}}</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <img class="img-responsive" src="../public/assets/images/portrait.png" alt="">
-                                                    <p id="studentNotes">Student Notes</p>
-                                                    <p id="studentGender">Gender:</p>
-                                                    <p id="studentGrade">Grade:</p>
+                                                    <p id="studentGender">{{student.student_gender}}</p>
+                                                    <p id="studentGrade">{{student.student_gradeLevel}}</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -102,7 +101,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>Bobson Dugnutt</td>
+                                <td>{{student.student_firstName}} &nbsp; {{student.student_lastName}}</td>
                                 <td>
                                     <h4 id="student-points">
                                         10000
@@ -154,9 +153,8 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <img class="img-responsive" src="../public/assets/images/portrait.png" alt="">
-                                                    <p id="studentNotes">Student Notes</p>
-                                                    <p id="studentGender">Gender:</p>
-                                                    <p id="studentGrade">Grade:</p>
+                                                    <p id="studentGender">{{student.student_gender}}</p>
+                                                    <p id="studentGrade">{{student.student_gradeLevel}}</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -165,7 +163,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>Onson Sweemey</td>
+                                <td>{{student.student_firstName}} &nbsp; {{student.student_lastName}}</td>
                                 <td>
                                     <h4 id="student-points">
                                         1400

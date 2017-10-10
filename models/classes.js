@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
       },
       class_period: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         validate: {
           len: [1,2]
         }

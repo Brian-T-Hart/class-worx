@@ -29,7 +29,7 @@ module.exports = function(app) {
       student_gradeLevel: req.body.grade
     }).then(function(result) {
       res.json(result);
-      // console.log(result);
+      // console.log(result)
     })
   });
 

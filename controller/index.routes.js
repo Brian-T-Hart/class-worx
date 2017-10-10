@@ -61,21 +61,21 @@ router.get('/students', (req,res,next) => {
     if(req.isAuthenticated()){
         db.students.findAll({
             include:[{
-                model: db.classes,
-            }],
-            include:[{
                 model: db.schedules,
+                include:[{
+                    model: db.classes,
+                    include:[{
+                        model: db.teachers,
+                        where:{
+                            teacher_id: req.user.teacher_id,
+                        }
+                    }],
+                }],
             }],
-            include:[{
-                model: db.teachers,
-            }],
-            where:{
-                teacherTeacherId: req.user.teacher_id,
-            }
         }).then(function(results){
-            res.json(results);
-            // var studentList = {students: results}
-            // res.render('class', studentList);
+            // res.json(results);
+            var studentList = {students: results}
+            res.render('class', studentList);
         });
     }else{
         res.redirect("/account/login");

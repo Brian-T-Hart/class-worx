@@ -13,14 +13,6 @@ module.exports = function(sequelize, DataTypes) {
               len: [1,2]
             }
           },
-          schedule_startTime: {
-            type: DataTypes.STRING,
-            allowNull: true,
-          },
-          schedule_endTime: {
-            type: DataTypes.STRING,
-            allowNull: true,
-          },
     },
   { timestamps: false });
     schedules.associate = function(models) {

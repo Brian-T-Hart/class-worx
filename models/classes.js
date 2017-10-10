@@ -25,6 +25,13 @@ module.exports = function(sequelize, DataTypes) {
           len: [1,10]
         }
       },
+      class_period: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          len: [1,2]
+        }
+      },  
     class_active: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

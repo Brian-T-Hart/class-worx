@@ -1,37 +1,23 @@
 {
-  "name": "class-worx",
-  "version": "1.0.0",
-  "description": "A teacher tool to change the world one classroom at a time. Teachers will be able to gamify any class with ease.",
-  "main": "server.js",
-  "scripts": {
-    "test": "test",
-    "start": "nodemon server.js"
+  "development": {
+    "username": "root",
+    "password": "test",
+    "database": "classworx",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bdoggincali/class-worx.git"
+  "test": {
+    "username": "root",
+    "password": "test",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   },
-  "author": "BOMN",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bdoggincali/class-worx/issues"
-  },
-  "homepage": "https://github.com/bdoggincali/class-worx#readme",
-  "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.18.2",
-    "express": "^4.16.1",
-    "express-handlebars": "^3.0.0",
-    "express-session": "^1.15.6",
-    "method-override": "^2.3.10",
-    "mysql2": "^1.4.2",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "path": "^0.12.7",
-    "sequelize": "^4.13.1"
-  },
-  "devDependencies": {
-    "karma": "^1.7.1",
-    "nodemon": "^1.12.1"
+  "production": {
+    "username": "root",
+    "password": "test",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   }
 }

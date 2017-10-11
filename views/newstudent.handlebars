@@ -1,48 +1,49 @@
 <body>
-    <h1>Add Student To Class</h1>
     <div class="container">
+        <h1>Add Student To Class</h1>
         <form action="/newStudent" method="POST">
             <div class="form-row">
                 <div class="form-group col-sm-3">
                     <select class="selectpicker" class="form-control" name="classPicker" id="classPicker">
                         <option value=''>Select Class:</option>
                         {{#each classes}}
-                            <option value={{this.class_id}}>Period: {{this.class_period}} Class Name:{{this.class_name}}</option>
+                        <option value={{this.class_id}}>Period: {{this.class_period}} Class Name:{{this.class_name}}</option>
                         {{/each}}
                     </select>
                 </div>
                 <div class="form-group col-sm-3">
                     <select class="selectpicker" class="form-control" name="selectGrade" id="selectGrade">
-                        <option value='' >Select Grade</option>
+                        <option value=''>Select Grade</option>
                         <option value='N/A'>N/A</option>
                         <option value="K">K</option>
-                        <option value="1" >1</option>
-                        <option value="2" >2</option>
-                        <option value="3" >3</option>
-                        <option value="4" >4</option>
-                        <option value="5" >5</option>
-                        <option value="6" >6</option>
-                        <option value="7" >7</option>
-                        <option value="8" >8</option>
-                        <option value="9" >9 Freshman</option>
-                        <option value="10" >10 Sophmore</option>
-                        <option value="11" >11 Junior</option>
-                        <option value="12" >12 Senior</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9 Freshman</option>
+                        <option value="10">10 Sophmore</option>
+                        <option value="11">11 Junior</option>
+                        <option value="12">12 Senior</option>
                     </select>
                 </div>
                 <div class="form-group col-sm-3">
                     <select class="selectpicker" class="form-control" name="selectGener" id="selectGender">
-                        <option value='' >Gender</option>
+                        <option value=''>Gender</option>
                         <option value='N/A'>N/A</option>
-                        <option value="Male" >Male</option>
-                        <option value="Female" >Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputStudentFirstName" class="col-form-label">First Name: </label>
-                    <input type="text" class="form-control" name="inputStudentFirstName" id="inputStudentFirstName" placeholder="First Name" required>
+                    <input type="text" class="form-control" name="inputStudentFirstName" id="inputStudentFirstName" placeholder="First Name"
+                        required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputStudentLastName" class="col-form-label">Last Name: </label>
@@ -52,14 +53,16 @@
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="inputStudentEmail" class="col-form-label">Email: </label>
-                    <input type="email" class="form-control" name="inputStudentEmail" id="inputStudentEmail" placeholder="studentemail@email.com" required>
+                    <input type="email" class="form-control" name="inputStudentEmail" id="inputStudentEmail" placeholder="studentemail@email.com"
+                        required>
                 </div>
                 <div class="form-group col-6">
                     <label for="inputStudentPhone" class="col-form-label">Phone: </label>
                     <input type="text" class="form-control" name="inputStudentPhone" id="inputStudentPhone" placeholder="555-555-5555">
                 </div>
             </div>
-            {{!-- <div class="form-group">
+            {{!--
+            <div class="form-group">
                 <label for="inputStudentImage" class="col-form-label">Student Image: </label>
                 <input type="text" class="form-control" id="inputStudentImage" placeholder="Copy and Paste Image URL">
             </div> --}}

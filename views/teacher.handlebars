@@ -45,6 +45,7 @@
                     <table class="table table-striped table-responsive">
                         <thead>
                             <tr>
+                                <th>Period</th>
                                 <th>Class</th>
                                 <th>Subject</th>
                                 <th>Points</th>
@@ -55,11 +56,14 @@
                             {{#each classes}}
                                 {{#if this.class_active}}
                                     <tr>
+                                        <td>{{this.class_period}}</td>
                                         <td>{{this.class_name}}</td>
                                         <td>{{this.class_subject}}</td>
                                         <td>{{this.class_score}}</td>
                                         <td>
-                                            <button type="button" class="btn btn-primary" action="/class/"+{{this.class_id}} method="get">View Class</button>
+                                            <form action="/class/{{this.class_id}}" method="get">
+                                                <button type="submit" class="btn btn-primary">View Class</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 {{/if}}
@@ -82,9 +86,11 @@
                 <div class="modal-body">
                     <form action="/dashboard" method="POST">
                         <label for="className">Class Name: </label>
-                        <input name="className" id="className" class="form-control" placeholder="Class Name" required="" autofocus=""/>
+                        <input name="className" id="className" class="form-control" placeholder="Algebra" required="" autofocus=""/>
                         <label for="classSubject">Class Subject: </label>
-                        <input name="classSubject" id="classSubject" class="form-control" placeholder="Class Subject" required="" autofocus=""/>
+                        <input name="classSubject" id="classSubject" class="form-control" placeholder="Math" required="" autofocus=""/>
+                        <label for="classPeriod">Class Period: </label>
+                        <input name="classPeriod" id="classPeriod" class="form-control" placeholder="0-7" required="" autofocus=""/>
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Add Class</button>
                     </form>
                 </div>

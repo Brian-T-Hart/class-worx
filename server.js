@@ -44,8 +44,10 @@ app.set("view engine" , "handlebars");
 // Routes
 // ======
 var index = require("./controller/index.routes");
+var api = require("./controller/api.routes");
 var account = require("./controller/account.routes");
 app.use("/", index);
+app.use("/api", api);
 app.use("/account", account);
 
 // Syncing our sequelize models and then starting our Express app

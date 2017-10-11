@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [4,12]
+          len: [4,50]
         }
       },
       teacher_password: {

@@ -1,19 +1,18 @@
 <body>
     <h1>Add Student To Class</h1>
     <div class="container">
-        <form>
+        <form action="/newStudent" method="POST">
             <div class="form-row">
                 <div class="form-group col-sm-3">
                     <select class="selectpicker" class="form-control" name="classPicker" id="classPicker">
                         <option value=''>Select Class:</option>
-                        <option value='N/A'>N/A</option>
                         {{#each classes}}
                             <option value={{this.class_id}}>Period: {{this.class_period}} Class Name:{{this.class_name}}</option>
                         {{/each}}
                     </select>
                 </div>
                 <div class="form-group col-sm-3">
-                    <select class="selectpicker" class="form-control" id="selectGrade">
+                    <select class="selectpicker" class="form-control" name="selectGrade" id="selectGrade">
                         <option value='' >Select Grade</option>
                         <option value='N/A'>N/A</option>
                         <option value="K">K</option>
@@ -32,7 +31,7 @@
                     </select>
                 </div>
                 <div class="form-group col-sm-3">
-                    <select class="selectpicker" class="form-control" id="selectGender">
+                    <select class="selectpicker" class="form-control" name="selectGener" id="selectGender">
                         <option value='' >Gender</option>
                         <option value='N/A'>N/A</option>
                         <option value="Male" >Male</option>
@@ -43,21 +42,21 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputStudentFirstName" class="col-form-label">First Name: </label>
-                    <input type="text" class="form-control" id="inputStudentFirstName" placeholder="First Name" required>
+                    <input type="text" class="form-control" name="inputStudentFirstName" id="inputStudentFirstName" placeholder="First Name" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputStudentLastName" class="col-form-label">Last Name: </label>
-                    <input type="text" class="form-control" id="inputStudentLastName" placeholder="Last Name" required>
+                    <input type="text" class="form-control" name="inputStudentLastName" id="inputStudentLastName" placeholder="Last Name" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="inputStudentEmail" class="col-form-label">Email: </label>
-                    <input type="email" class="form-control" id="inputStudentEmail" placeholder="studentemail@email.com" required>
+                    <input type="email" class="form-control" name="inputStudentEmail" id="inputStudentEmail" placeholder="studentemail@email.com" required>
                 </div>
                 <div class="form-group col-6">
                     <label for="inputStudentPhone" class="col-form-label">Phone: </label>
-                    <input type="text" class="form-control" id="inputStudentPhone" placeholder="555-555-5555">
+                    <input type="text" class="form-control" name="inputStudentPhone" id="inputStudentPhone" placeholder="555-555-5555">
                 </div>
             </div>
             {{!-- <div class="form-group">

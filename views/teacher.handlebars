@@ -32,7 +32,7 @@
     <div class="container">
         <div class="row">
             <h1 class="col-9">Class List</h1>
-            <button class="col-3" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClassModal">Add Class</button>
+            <button class="col-3 btn btn-primary" type="button" data-toggle="modal" data-target="#addClassModal">Add Class</button>
         <div class="row">
     </div>
 
@@ -61,7 +61,7 @@
                                         <td>{{this.class_subject}}</td>
                                         <td>{{this.class_score}}</td>
                                         <td>
-                                            <form action="/class/{{this.class_id}}" method="get">
+                                            <form action="/class/{{this.class_id}}" method="get" type="hidden">
                                                 <button type="submit" class="btn btn-primary">View Class</button>
                                             </form>
                                         </td>

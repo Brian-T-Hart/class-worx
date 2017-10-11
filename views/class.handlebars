@@ -32,8 +32,8 @@
     <div class="container">
         <h1>List of Students
             <span>
-                <form action="/newStudent" method="GET">
-                    <button type="submit" id="add-student" class="btn btn-primary pull-right">Add Student</button>
+                <form action="/newStudent" method="GET" type="hidden">
+                    <button type="submit" id="add-student" class="btn btn-primary" >Add Student</button>
                 </form>
             </span>
         </h1>
@@ -92,9 +92,11 @@
                                             Score: {{this.student_score}}
                                         </h4>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-secondary">+1</button>
-                                            <button type="button" class="btn btn-secondary">+10</button>
-                                            <button type="button" class="btn btn-secondary">-1</button>
+                                            <form action="api/{{this.student_id}}" method="PUT">
+                                                <button type="submit" name="increment1" value=1 class="btn btn-secondary">+1</button>
+                                                <button type="submit" name="increment10" value=10 class="btn btn-secondary">+10</button>
+                                                <button type="submit" name="decrement" value=-1 class="btn btn-secondary">-1</button>
+                                            </form>
                                         </div>
                                     </td>
                                     <td>
@@ -102,7 +104,7 @@
                                             Hall Passes: {{this.student_hallPass}}
                                         </h4>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-secondary">+1</button>
+                                            <button type="button" class="btn btn-secondary {{this.student_id}}">+1</button>
                                             <button type="button" class="btn btn-secondary">-1</button>
                                         </div>
                                     </td>

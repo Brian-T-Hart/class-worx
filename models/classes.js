@@ -42,10 +42,8 @@ module.exports = function(sequelize, DataTypes) {
     classes.associate = function(models) {
           classes.belongsTo(models.teachers, {
             onDelete: "CASCADE"
-            // foreignKey: 'teacher_id'
           }),
           classes.hasMany(models.schedules, {
-            // foreignKey: 'schedule_period',
             onDelete: "CASCADE"
           });
         };

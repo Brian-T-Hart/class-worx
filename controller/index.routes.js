@@ -23,6 +23,8 @@ router.get('/dashboard', (req, res, next) =>{
                 teacherTeacherId: req.user.teacher_id,
             }
         }).then(function(results){
+            console.log("class id: " + results[0].class_id);
+            console.log("class name: " + results[0].class_name);
             var classList = {classes: results}
             res.render('teacher', classList);
         });
@@ -73,6 +75,7 @@ router.get('/students', (req,res,next) => {
                 }],
             }],
         }).then(function(results){
+            // console.log(results);
             var studentList = {students: results}
             res.render('class', studentList);
         });

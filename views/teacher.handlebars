@@ -1,19 +1,19 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" id="home-button" href="#">Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="/students">Students
-                <span class="sr-only">(current)</span>
-              </a>
+                            <span class="sr-only">(current)</span>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">{{classes.0.teacher.teacher_userName}}</a>
@@ -31,8 +31,13 @@
     <!-- Page Content -->
     <div class="container">
         <div class="row">
+<<<<<<< HEAD
             <h1 class="col-9">Class List</h1>
             <span class="col-3">
+=======
+            <h1 class="col-10">Class List</h1>
+            <span class="col-2">
+>>>>>>> 228f8b8b2dc73cd920a9d4cd06c665031634a719
                 <button class="btn btn-primary pull-right" type="button" data-toggle="modal" data-target="#addClassModal">Add Class</button>
             </span>
         </div>
@@ -55,21 +60,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each classes}}
-                                {{#if this.class_active}}
-                                    <tr>
-                                        <td>{{this.class_period}}</td>
-                                        <td>{{this.class_name}}</td>
-                                        <td>{{this.class_subject}}</td>
-                                        <td>{{this.class_score}}</td>
-                                        <td>
-                                            <form action="/class/{{this.class_id}}" method="get" type="hidden">
-                                                <button type="submit" class="btn btn-primary">View Class</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                {{/if}}
-                            {{/each}}
+                            {{#each classes}} {{#if this.class_active}}
+                            <tr>
+                                <td>{{this.class_period}}</td>
+                                <td>{{this.class_name}}</td>
+                                <td>{{this.class_subject}}</td>
+                                <td>{{this.class_score}}</td>
+                                <td>
+                                    <form action="/class/{{this.class_id}}" method="get" type="hidden">
+                                        <button type="submit" class="btn btn-primary">View Class</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {{/if}} {{/each}}
                         </tbody>
                     </table>
                 </div>
@@ -79,7 +82,7 @@
     <div class="modal fade" id="addClassModal" role="dialog">
         <div class="modal-dialog">
 
-        <!-- Modal content-->
+            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -88,11 +91,11 @@
                 <div class="modal-body">
                     <form action="/dashboard" method="POST">
                         <label for="className">Class Name: </label>
-                        <input name="className" id="className" class="form-control" placeholder="Algebra" required="" autofocus=""/>
+                        <input name="className" id="className" class="form-control" placeholder="Algebra" required="" autofocus="" />
                         <label for="classSubject">Class Subject: </label>
-                        <input name="classSubject" id="classSubject" class="form-control" placeholder="Math" required="" autofocus=""/>
+                        <input name="classSubject" id="classSubject" class="form-control" placeholder="Math" required="" autofocus="" />
                         <label for="classPeriod">Class Period: </label>
-                        <input name="classPeriod" id="classPeriod" class="form-control" placeholder="0-7" required="" autofocus=""/>
+                        <input name="classPeriod" id="classPeriod" class="form-control" placeholder="0-7" required="" autofocus="" />
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Add Class</button>
                     </form>
                 </div>
@@ -103,4 +106,5 @@
         </div>
     </div>
 </body>
+
 </html>

@@ -23,9 +23,6 @@ var students = sequelize.define("students", {
   student_phone: {
     type: DataTypes.STRING,
     allowNull: true,
-    validate: {
-      len: [7,14]
-    }
   },
   student_email: {
     type: DataTypes.STRING,

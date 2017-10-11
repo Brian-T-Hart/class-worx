@@ -82,3 +82,16 @@ button {
 #myTab, #nav-home, #nav-profile {
   max-width: 500px;
 }
+
+#nav-home, #nav-home-tab {
+  background-color:white;
+}
+
+#nav-profile-tab, #nav-profile {
+  background-color: #f0f0f0;
+}
+
+.splash {
+  background-image: url("/assets/images/class.png");
+  background-size: cover;
+}

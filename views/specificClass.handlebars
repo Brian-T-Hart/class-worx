@@ -30,19 +30,12 @@
     <!-- Page Content -->
     <div class="container">
         <div class="row">
-<<<<<<< HEAD
-            <h1 class="col-sm-9">{{students.0.schedules.0.class.class_name}} Students</h1>
-            <form action="/newStudent" method="GET" class="col-sm-3">
-                <button type="submit" id="add-student" class="btn btn-primary pull-right">Add Student</button>
-            </form>
-=======
             <h1 class="col-10">{{students.0.schedules.0.class.class_name}} Students</h1>
             <span class="col-2">
                 <form action="/newStudent" method="GET">
                     <button type="submit" id="add-student" class="btn btn-primary pull-right">Add Student</button>
                 </form>
             </span>
->>>>>>> 228f8b8b2dc73cd920a9d4cd06c665031634a719
         </div>
     </div>
 
@@ -89,7 +82,6 @@
                                                 </div>
                                             </div>
                                         </div>
-<<<<<<< HEAD
                                     </td>
                                     <td>{{this.student_firstName}} &nbsp; {{this.student_lastName}}</td>
                                     <td>
@@ -125,33 +117,6 @@
                                 <!--end Placeholder row1-->
                                 {{/if}}
                             {{/each}}
-=======
-                                    </div>
-                                </td>
-                                <td>{{this.student_firstName}}&nbsp;{{this.student_lastName}}</td>
-                                <td>
-                                    <h4 id="student-points">
-                                        Score: {{this.student_score}}
-                                    </h4>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary">+1</button>
-                                        <button type="button" class="btn btn-secondary">+10</button>
-                                        <button type="button" class="btn btn-secondary">-1</button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 id="hall-pass">
-                                        Hall Passes: {{this.student_hallPass}}
-                                    </h4>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary">+1</button>
-                                        <button type="button" class="btn btn-secondary">-1</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!--end Placeholder row1-->
-                            {{/if}} {{/each}}
->>>>>>> 228f8b8b2dc73cd920a9d4cd06c665031634a719
                         </tbody>
                     </table>
                 </div>

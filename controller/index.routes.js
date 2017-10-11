@@ -32,6 +32,17 @@ router.get('/dashboard', (req, res, next) =>{
     }
 });
 
+
+// db.students.findAll({
+//     include:[{
+//         model: db.schedules,
+//         attributes: [[sequelize.fn('AVG', sequelize.col('student_scores'))]],
+//     }],
+//     where:{
+//         class: req.user.teacher_id
+//     }
+//     });
+
 router.post('/dashboard', (req, res, next) =>{
     if(req.isAuthenticated()){
         db.classes.create({
@@ -68,7 +79,6 @@ router.get('/class/:id', (req, res, next) =>{
                 }],
             }],
         }).then(function(results){
-            // console.log(results);
             var studentList = {students: results}
             res.render('specificClass', studentList);
         });

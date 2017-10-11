@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "048999",
+    "password": "test",
     "database": "classworx",
     "host": "127.0.0.1",
     "dialect": "mysql"

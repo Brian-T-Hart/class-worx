@@ -87,7 +87,6 @@
                                                 </div>
                                             </div>
                                         </div>
-<<<<<<< HEAD
                                     </td>
                                     <td>{{this.student_firstName}} &nbsp; {{this.student_lastName}}</td>
                                     <td>
@@ -119,35 +118,6 @@
                                 <!--end Placeholder row1-->
                                 {{/if}}
                             {{/each}}
-=======
-                                    </div>
-                                </td>
-                                <td>{{this.student_firstName}}&nbsp;{{this.student_lastName}}</td>
-                                <td>
-                                    <h4 id="student-points">
-                                        Score: {{this.student_score}}
-                                    </h4>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <form action="api/{{this.student_id}}" method="PUT">
-                                            <button type="submit" name="increment1" value=1 class="btn btn-secondary">+1</button>
-                                            <button type="submit" name="increment10" value=10 class="btn btn-secondary">+10</button>
-                                            <button type="submit" name="decrement" value=-1 class="btn btn-secondary">-1</button>
-                                        </form>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 id="hall-pass">
-                                        Hall Passes: {{this.student_hallPass}}
-                                    </h4>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary {{this.student_id}}">+1</button>
-                                        <button type="button" class="btn btn-secondary">-1</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!--end Placeholder row1-->
-                            {{/if}} {{/each}}
->>>>>>> 228f8b8b2dc73cd920a9d4cd06c665031634a719
                         </tbody>
                     </table>
                 </div>

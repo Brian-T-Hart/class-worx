@@ -90,9 +90,15 @@
                                             Score: {{this.student_score}}
                                         </h4>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-secondary">+1</button>
-                                            <button type="button" class="btn btn-secondary">+10</button>
-                                            <button type="button" class="btn btn-secondary">-1</button>
+                                            <form action="/api/points/{{this.student_id}}/1?_method=PUT" method="POST">
+                                                <button type="submit" class="btn btn-secondary">+1</button>
+                                            </form>
+                                            <form action="/api/points/{{this.student_id}}/10?_method=PUT" method="POST">
+                                                <button type="submit" class="btn btn-secondary">+10</button>
+                                            </form>
+                                            <form action="/api/points/{{this.student_id}}/-1?_method=PUT" method="POST">
+                                                <button type="submit" class="btn btn-secondary">-1</button>
+                                            </form>
                                         </div>
                                     </td>
                                     <td>
@@ -100,8 +106,12 @@
                                             Hall Passes: {{this.student_hallPass}}
                                         </h4>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-secondary">+1</button>
-                                            <button type="button" class="btn btn-secondary">-1</button>
+                                            <form action="/api/hallpass/{{this.student_id}}/1?_method=PUT" method="POST">
+                                                <button type="submit" class="btn btn-secondary">+1</button>
+                                            </form>
+                                            <form action="/api/hallpass/{{this.student_id}}/-1?_method=PUT" method="POST">
+                                                <button type="submit" class="btn btn-secondary">-1</button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

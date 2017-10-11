@@ -5,28 +5,22 @@ var db = require("../models");
 var passport = require("passport");
 
 // PUT route for updating student points via buttons
-router.put("/:id/:value", (req, res) => {
-        console.log("Hello");
-        res.redirect("/class/" +req.params.id);
-})
-    
-    // if (req.body.name == +1) {
-    //     value = parseInt(param)
-    // }
-    // if(req.body.name == +10){
-    //     value = parseInt(param)
-    // }
-    // if(req.body.name == decrement){
-    //     value= -1
-    // }
-    // db.students.update({   
-    //     student_score: student_score + value},
-    //     {where: 
-    //         {student_id: req.params.id}
-    //   }).then(function(result) {
-    //     res.json(result);
-    //     // console.log(result);
-    //   });
-    // });
+router.put("/points/:id/:points", function(req, res) {
+        var points = parseInt(req.params.points);
+        db.students.findById(req.params.id).then( student => {
+            return student.increment( "student_score" , {by: points});
+        }).then(function(results){
+            res.redirect("/dashboard");
+        });
+});
+
+router.put("/hallpass/:id/:passes", function(req, res) {
+    var passes = parseInt(req.params.passes);
+    db.students.findById(req.params.id).then( student => {
+        return student.increment( "student_hallpass" , {by: passes});
+    }).then(function(results){
+        res.redirect("/dashboard");
+    });
+});
 
 module.exports = router;

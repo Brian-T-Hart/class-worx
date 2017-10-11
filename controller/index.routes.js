@@ -24,8 +24,6 @@ router.get('/dashboard', (req, res, next) =>{
             },
             order: db.sequelize.col('class_period')
         }).then(function(results){
-            console.log("class id: " + results[0].class_id);
-            console.log("class name: " + results[0].class_name);
             var classList = {classes: results}
             res.render('teacher', classList);
         });

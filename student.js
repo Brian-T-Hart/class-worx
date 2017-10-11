@@ -23,7 +23,7 @@ app.put("api/:id", function(req, res) {
 db.students.findAll({
     include:[{
         model: db.schedules,
-        attributes: [[sequelize.fn('SUM', sequelize.col('student_scores'))]],
+        attributes: [[sequelize.fn('AVG', sequelize.col('student_scores'))]],
     }],
     where:{
         class: req.user.teacher_id

@@ -68,6 +68,7 @@ router.get('/class/:id', (req, res, next) =>{
                 }],
             }],
         }).then(function(results){
+            // console.log(results);
             var studentList = {students: results}
             res.render('specificClass', studentList);
         });

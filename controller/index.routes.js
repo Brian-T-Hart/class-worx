@@ -17,7 +17,7 @@ router.get('/dashboard', (req, res, next) =>{
         db.classes.findAll({
             include:[{
                 model: db.teachers,
-                attribute: [['name', 'teacher_userName']] // should this be techer_userName, varchar;
+                attribute: [['name', 'teacher_userName']]
             }],
             where:{
                 teacherTeacherId: req.user.teacher_id,

@@ -30,14 +30,14 @@
 
     <!-- Page Content -->
     <div class="container">
-        <h1>List of Students
+        <div class="row">
+            <h1>List of Students</h1>
             <span>
                 <form action="/newStudent" method="GET" type="hidden">
                     <button type="submit" id="add-student" class="btn btn-primary" >Add Student</button>
                 </form>
             </span>
-        </h1>
-
+        </div>
     </div>
 
     <div class="container">
@@ -92,10 +92,14 @@
                                             Score: {{this.student_score}}
                                         </h4>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <form action="api/{{this.student_id}}" method="PUT">
-                                                <button type="submit" name="increment1" value=1 class="btn btn-secondary">+1</button>
-                                                <button type="submit" name="increment10" value=10 class="btn btn-secondary">+10</button>
-                                                <button type="submit" name="decrement" value=-1 class="btn btn-secondary">-1</button>
+                                            <form action="api/{{this.student_id}}/1" method="put">
+                                                <button type="submit" name="increment1" class="btn btn-secondary">+1</button>
+                                            </form>
+                                            <form action="/api/{{this.student_id}}/10" method="put">
+                                                <button type="submit" name="increment10" class="btn btn-secondary">+10</button>
+                                            </form>
+                                            <form action="api/{{this.student_id}}/-1" method="put">
+                                                <button type="submit" name="decrement" class="btn btn-secondary">-1</button>
                                             </form>
                                         </div>
                                     </td>

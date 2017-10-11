@@ -30,14 +30,12 @@
 
     <!-- Page Content -->
     <div class="container">
-        <h1>{{students.0.schedules.0.class.class_name}} Students
-            <span>
-                <form action="/newStudent" method="GET">
-                    <button type="submit" id="add-student" class="btn btn-primary pull-right">Add Student</button>
-                </form>
-            </span>
-        </h1>
-
+        <div class="row">
+            <h1 class="col-sm-9">{{students.0.schedules.0.class.class_name}} Students</h1>
+            <form action="/newStudent" method="GET" class="col-sm-3">
+                <button type="submit" id="add-student" class="btn btn-primary pull-right">Add Student</button>
+            </form>
+        </div>
     </div>
 
     <div class="container">

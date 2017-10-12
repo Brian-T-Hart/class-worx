@@ -12,7 +12,7 @@ require('./passport.js');
 // Set up the Express App
 // ======================
 var app = express();
-var PORT = process.env.CLEARDB_URL || 3000;
+var PORT = process.env.CLEARDB_DATABASE_URL || 3000;
 
 // Requiring our models for syncing
 // ================================

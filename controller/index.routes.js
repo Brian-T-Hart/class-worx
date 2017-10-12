@@ -12,6 +12,7 @@ router.get('/', (req, res, next) => {
     }
 });
 
+// route to teacher dashboard
 router.get('/dashboard', (req, res, next) =>{
     if(req.isAuthenticated()){
         db.classes.findAll({
@@ -43,6 +44,7 @@ router.get('/dashboard', (req, res, next) =>{
 //     }
 //     });
 
+// post to create a new class
 router.post('/dashboard', (req, res, next) =>{
     if(req.isAuthenticated()){
         db.classes.create({
@@ -60,6 +62,7 @@ router.post('/dashboard', (req, res, next) =>{
     }
 })
 
+// route to get students from a particular class
 router.get('/class/:id', (req, res, next) =>{
     if(req.isAuthenticated()){
         db.students.findAll({
@@ -133,6 +136,7 @@ router.get('/students', (req,res,next) => {
     }
 });
 
+// route to page for creating new student
 router.get('/newStudent' , (req, res, done) => {
     if(req.isAuthenticated()){
         db.classes.findAll({
@@ -153,6 +157,7 @@ router.get('/newStudent' , (req, res, done) => {
     }        
 })
 
+// route to create a new student and schedule in the database
 router.post("/newStudent" , (req, res, done) =>{
     if(req.isAuthenticated()){
         db.students.create({

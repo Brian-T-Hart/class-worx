@@ -12,7 +12,7 @@ require('./passport.js');
 // Set up the Express App
 // ======================
 var app = express();
-var PORT = process.env.PORT || 3306;
+var PORT = process.env.PORT || 3000;
 
 // Requiring our models for syncing
 // ================================

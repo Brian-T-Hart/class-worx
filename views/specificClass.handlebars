@@ -59,7 +59,7 @@
                                 <td>
                                     <!-- Trigger the modal with a button -->
                                     <button type="button" data-toggle="modal" data-target="#studentModal" +{{this.student_id}}>
-                                        <img class="icon img-responsive" src="/assets/images/portrait.png" alt="">
+                                        <img class="icon img-responsive" src="{{this.student_image}}" alt="">
                                     </button>
 
                                     <!-- Modal -->
@@ -73,7 +73,7 @@
                                                     <h4 class="modal-title">{{this.student_firstName}}&nbsp;{{this.student_lastName}}</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <img class="img-responsive" src="/assets/images/portrait.png" alt="">
+                                                    <img class="img-responsive" src="{{this.student_image}}" alt="">
                                                     <p id="studentGender">Gender: {{this.student_gender}}</p>
                                                     <p id="studentGrade">Grade: {{this.student_gradeLevel}}</p>
                                                 </div>

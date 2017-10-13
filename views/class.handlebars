@@ -15,7 +15,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{students.0.schedules.0.class.teacher.teacher_userName}}</a>
+                        <a class="nav-link" href="#">{{teachers.0.teacher_userName}}</a>
                     </li>
                     <li id="logoff">
                         <a class="nav-link" href="/account/logout">Logout</a>
@@ -54,28 +54,30 @@
                         </thead>
                         <tbody>
                             <!-- begin placeholder row 1 element-->
-                            {{#each students}} {{#if this.student_active}}
+                            {{#each teachers.0.classes}}
+                            {{#each this.schedules}} 
+                            {{#if this.student.student_active}}
                             <tr>
                                 <td>
                                     <!-- Trigger the modal with a button -->
-                                    <button type="button" data-toggle="modal" data-target="#studentModal" +{{this.student_id}}>
+                                    <button type="button" data-toggle="modal" data-target="#studentModal" +{{this.student.student_id}}>
                                         <img class="icon img-responsive" src="/assets/images/portrait.png" alt="">
                                     </button>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="studentModal" + {{this.student_id}} role="dialog">
+                                    <div class="modal fade" id="studentModal" + {{this.student.student_id}} role="dialog">
                                         <div class="modal-dialog">
 
                                             <!-- Modal content-->
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title">{{this.student_firstName}}&nbsp;{{this.student_lastName}}</h4>
+                                                    <h4 class="modal-title">{{this.student.student_firstName}}&nbsp;{{this.student.student_lastName}}</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <img class="img-responsive" src="/assets/images/portrait.png" alt="">
-                                                    <p id="studentGender">Gender: {{this.student_gender}}</p>
-                                                    <p id="studentGrade">Grade: {{this.student_gradeLevel}}</p>
+                                                    <p id="studentGender">Gender: {{this.student.student_gender}}</p>
+                                                    <p id="studentGrade">Grade: {{this.student.student_gradeLevel}}</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -83,35 +85,40 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{this.student_firstName}} &nbsp; {{this.student_lastName}}</td>
+                                    <td>{{this.student.student_firstName}} &nbsp; {{this.student.student_lastName}}</td>
                                     <td>
                                         <h4 id="student-points">
-                                            Score: {{this.student_score}}
+                                            Score: {{this.student.student_score}}
                                         </h4>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <form action="api/{{this.student_id}}/1" method="put">
+                                            <form action="api/points/{{this.student.student_id}}/1?_method=PUT" method="POST">
                                                 <button type="submit" name="increment1" class="btn btn-secondary">+1</button>
                                             </form>
-                                            <form action="/api/{{this.student_id}}/10" method="put">
+                                            <form action="/api/points/{{this.student.student_id}}/10?_method=PUT" method="POST">
                                                 <button type="submit" name="increment10" class="btn btn-secondary">+10</button>
                                             </form>
-                                            <form action="api/{{this.student_id}}/-1" method="put">
+                                            <form action="api/points/{{this.student.student_id}}/-1?_method=PUT" method="POST">
                                                 <button type="submit" name="decrement" class="btn btn-secondary">-1</button>
                                             </form>
                                         </div>
                                     </td>
                                     <td>
                                         <h4 id="hall-pass">
-                                            Hall Passes: {{this.student_hallPass}}
+                                            Hall Passes: {{this.student.student_hallPass}}
                                         </h4>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-secondary {{this.student_id}}">+1</button>
-                                            <button type="button" class="btn btn-secondary">-1</button>
+                                            <form action="/api/hallpass/{{this.student.student_id}}/1?_method=PUT" method="POST">
+                                                <button type="submit" class="btn btn-secondary">+1</button>
+                                            </form>
+                                            <form action="/api/hallpass/{{this.student.student_id}}/-1?_method=PUT" method="POST">
+                                                <button type="submit" class="btn btn-secondary">-1</button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
                                 <!--end Placeholder row1-->
                                 {{/if}}
+                            {{/each}}
                             {{/each}}
                         </tbody>
                     </table>

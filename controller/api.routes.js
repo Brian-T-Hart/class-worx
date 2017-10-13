@@ -5,6 +5,24 @@ var db = require("../models");
 var passport = require("passport");
 
 // PUT route for updating student points via buttons
+router.put("/points/:id/:points", function(req, res) {
+    var points = parseInt(req.params.points);
+    db.students.findById(req.params.id).then( student => {
+        return student.increment( "student_score" , {by: points});
+    }).then(function(results){
+        res.redirect("/students");
+    });
+});
+
+router.put("/hallpass/:id/:passes", function(req, res) {
+    var passes = parseInt(req.params.passes);
+    db.students.findById(req.params.id).then( student => {
+        return student.increment( "student_hallpass" , {by: passes});
+    }).then(function(results){
+        res.redirect("/students");
+    });
+});
+
 router.put("/points/:class/:id/:points", function(req, res) {
         var points = parseInt(req.params.points);
         db.students.findById(req.params.id).then( student => {

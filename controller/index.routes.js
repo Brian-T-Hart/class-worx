@@ -32,17 +32,6 @@ router.get('/dashboard', (req, res, next) =>{
     }
 });
 
-
-// db.students.findAll({
-//     include:[{
-//         model: db.schedules,
-//         attributes: [[sequelize.fn('AVG', sequelize.col('student_scores'))]],
-//     }],
-//     where:{
-//         class: req.user.teacher_id
-//     }
-//     });
-
 router.post('/dashboard', (req, res, next) =>{
     if(req.isAuthenticated()){
         db.classes.create({
@@ -89,44 +78,23 @@ router.get('/class/:id', (req, res, next) =>{
 
 
 router.get('/students', (req,res,next) => {
-    if(req.isAuthenticated()){
-        db.classes.findAll({
+    if(req.isAuthenticated()){       
+        db.teachers.findAll({
             include:[{
-                model: db.teachers,
-                attribute: [['name', 'teacher_userName']] // should this be techer_userName, varchar;
+                model: db.classes,
+                include:[{
+                    model: db.schedules,
+                    include:[{
+                        model: db.students,
+                    }],
+                }],
             }],
             where:{
-                teacherTeacherId: req.user.teacher_id,
+                teacher_id: req.user.teacher_id
             },
-            include:[{
-                model: db.schedules,
-                include:[{
-                    model: db.students,
-                    where:
-                       {}
-                }]
-            }]
-        
-        // db.students.findAll({
-        //     include:[{
-        //         model: db.schedules,
-        //         where:{
-        //             classClassId: db.classes.class_id
-        //         },
-        //         include:[{
-        //             model: db.classes,
-        //             where:{
-        //                 teacherTeacherId: req.user.teacher_id
-        //             },
-        //             include:[{
-        //                 model: db.teachers,
-        //             }],
-        //         }],
-        //     }],
         }).then(function(results){
-            res.json(results);
-            // var studentList = {students: results}
-            // res.render('class', studentList);
+            var teachersList = {teachers: results}
+            res.render('class', teachersList);
         });
     }else{
         res.redirect("/account/login");

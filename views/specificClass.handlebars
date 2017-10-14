@@ -44,14 +44,14 @@
             <div class="row">
                 <div class="col-12">
                     <table class="table table-striped table-responsive">
-                        <thead>
+                        {{!-- <thead>
                             <tr>
                                 <th>Picture</th>
                                 <th>Name</th>
                                 <th>Points</th>
                                 <th>Hall Pass</th>
                             </tr>
-                        </thead>
+                        </thead> --}}
                         <tbody>
                             <!-- begin placeholder row 1 element-->
                             {{#each students}} {{#if this.student_active}}
@@ -83,7 +83,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{this.student_firstName}} &nbsp; {{this.student_lastName}}</td>
+                                    <td><h4>{{this.student_firstName}} {{this.student_lastName}}</h4></td>
                                     <td>
                                         <h4 id="student-points">
                                             Score: {{this.student_score}}
@@ -113,6 +113,21 @@
                                             </form>
                                         </div>
                                     </td>
+
+                                    <td>
+                                        <h4 id="HW-pass">
+                                            HW Pass: {{this.student_hallPass}}
+                                        </h4>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
+                                                <button type="submit" class="btn btn-secondary">+1</button>
+                                            </form>
+                                            <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
+                                                <button type="submit" class="btn btn-secondary">-1</button>
+                                            </form>
+                                        </div>
+                                    </td>
+
                                 </tr>
                                 <!--end Placeholder row1-->
                                 {{/if}}

@@ -137,7 +137,7 @@ router.get('/students', (req,res,next) => {
 });
 
 // route to page for creating new student
-router.get('/newStudent' , (req, res, done) => {
+router.get('/newstudent' , (req, res, done) => {
     if(req.isAuthenticated()){
         db.classes.findAll({
             include:[{
@@ -150,7 +150,7 @@ router.get('/newStudent' , (req, res, done) => {
             order: db.sequelize.col('class_period')
     }).then(function(results){
         var classNames = {classes: results}
-        res.render('newStudent', classNames);
+        res.render('newstudent', classNames);
         });
     }else{
         res.redirect("/account/login");
@@ -158,7 +158,7 @@ router.get('/newStudent' , (req, res, done) => {
 })
 
 // route to create a new student and schedule in the database
-router.post("/newStudent" , (req, res, done) =>{
+router.post("/newstudent" , (req, res, done) =>{
     if(req.isAuthenticated()){
         db.students.create({
             student_lastName: req.body.inputStudentLastName,

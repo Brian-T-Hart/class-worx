@@ -16,7 +16,7 @@
   "production": {
     "username": "bfff9409b1816c",
     "password": "4ded4019",
-    "database": "ClassWorx",
+    "database": "heroku_4dd620d296c27e4",
     "host": "us-cdbr-iron-east-05.cleardb.net",
     "dialect": "mysql"
   }

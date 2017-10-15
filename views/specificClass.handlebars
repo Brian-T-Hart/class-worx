@@ -116,13 +116,13 @@
 
                                     <td>
                                         <h4 id="HW-pass">
-                                            HW Pass: {{this.student_hallPass}}
+                                            HW Pass: {{this.student_homeworkPass}}
                                         </h4>
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
+                                            <form action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
                                                 <button type="submit" class="btn btn-secondary">+1</button>
                                             </form>
-                                            <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
+                                            <form action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
                                                 <button type="submit" class="btn btn-secondary">-1</button>
                                             </form>
                                         </div>

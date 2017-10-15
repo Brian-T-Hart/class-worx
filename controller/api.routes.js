@@ -36,4 +36,20 @@ router.put("/hallpass/:class/:id/:passes", function(req, res) {
     });
 });
 
+// route for updating the number of homework passes
+router.put("/homeworkPass/:class/:id/:passes", function(req, res) {
+    var passes = parseInt(req.params.passes);
+    db.students.findById(req.params.id).then( student => {
+        var currentPasses = student.student_homeworkPass;
+        if (passes > 0) {
+            return student.increment( "student_homeworkPass" , {by: passes});
+            }
+        if (passes < 0 && currentPasses > 0) {
+            return student.increment( "student_homeworkPass" , {by: passes});
+            }
+    }).then(function(results){
+        res.redirect("/class/"+req.params.class);
+    });
+});
+
 module.exports = router;

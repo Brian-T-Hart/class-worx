@@ -56,6 +56,11 @@ var students = sequelize.define("students", {
     allowNull: false,
     defaultValue: 2,
   },
+  student_homeworkPass: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 1,
+  },
   student_active: {
     type: DataTypes.BOOLEAN,
     allowNull: false,

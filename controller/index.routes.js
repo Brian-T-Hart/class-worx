@@ -81,6 +81,7 @@ router.get('/class/:id', (req, res, next) =>{
                     }],
                 }],
             }],
+            order: db.sequelize.col('student_lastName')
         }).then(function(results){
             var studentList = {students: results}
             res.render('specificClass', studentList);

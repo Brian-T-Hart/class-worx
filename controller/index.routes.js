@@ -33,17 +33,6 @@ router.get('/dashboard', (req, res, next) =>{
     }
 });
 
-
-// db.students.findAll({
-//     include:[{
-//         model: db.schedules,
-//         attributes: [[sequelize.fn('AVG', sequelize.col('student_scores'))]],
-//     }],
-//     where:{
-//         class: req.user.teacher_id
-//     }
-//     });
-
 // post to create a new class
 router.post('/dashboard', (req, res, next) =>{
     if(req.isAuthenticated()){
@@ -91,13 +80,13 @@ router.get('/class/:id', (req, res, next) =>{
     }
 });
 
-
+// route to get all students belonging to the teacher
 router.get('/students', (req,res,next) => {
     if(req.isAuthenticated()){
         db.classes.findAll({
             include:[{
                 model: db.teachers,
-                attribute: [['name', 'teacher_userName']] // should this be techer_userName, varchar;
+                attribute: [['name', 'teacher_userName']]
             }],
             where:{
                 teacherTeacherId: req.user.teacher_id,
@@ -110,27 +99,8 @@ router.get('/students', (req,res,next) => {
                        {}
                 }]
             }]
-        
-        // db.students.findAll({
-        //     include:[{
-        //         model: db.schedules,
-        //         where:{
-        //             classClassId: db.classes.class_id
-        //         },
-        //         include:[{
-        //             model: db.classes,
-        //             where:{
-        //                 teacherTeacherId: req.user.teacher_id
-        //             },
-        //             include:[{
-        //                 model: db.teachers,
-        //             }],
-        //         }],
-        //     }],
         }).then(function(results){
             res.json(results);
-            // var studentList = {students: results}
-            // res.render('class', studentList);
         });
     }else{
         res.redirect("/account/login");
@@ -167,7 +137,7 @@ router.post("/newstudent" , (req, res, done) =>{
             student_phone: req.body.inputStudentPhone,
             student_email: req.body.inputStudentEmail,
             student_image: "/assets/images/portrait.png",
-            student_gender: req.body.selectGener,
+            student_gender: req.body.selectGender,
             student_gradeLevel: req.body.selectGrade,
             student_score: 0,
             student_hallPass: 2,

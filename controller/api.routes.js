@@ -26,10 +26,10 @@ router.put("/hallpass/:class/:id/:passes", function(req, res) {
     db.students.findById(req.params.id).then( student => {
         var currentPasses = student.student_hallPass;
         if (passes > 0) {
-            return student.increment( "student_hallpass" , {by: passes});
+            return student.increment( "student_hallpass" , {by: passes}),student.increment( "student_score" , {by: 100});
             }
         if (passes < 0 && currentPasses > 0) {
-            return student.increment( "student_hallpass" , {by: passes});
+            return student.increment( "student_hallpass" , {by: passes}), student.increment( "student_score" , {by: -100});
             }
     }).then(function(results){
         res.redirect("/class/"+req.params.class);
@@ -42,10 +42,10 @@ router.put("/homeworkPass/:class/:id/:passes", function(req, res) {
     db.students.findById(req.params.id).then( student => {
         var currentPasses = student.student_homeworkPass;
         if (passes > 0) {
-            return student.increment( "student_homeworkPass" , {by: passes});
+            return student.increment( "student_homeworkPass" , {by: passes}), student.increment( "student_score" , {by: 100});
             }
         if (passes < 0 && currentPasses > 0) {
-            return student.increment( "student_homeworkPass" , {by: passes});
+            return student.increment( "student_homeworkPass" , {by: passes}), student.increment( "student_score" , {by: -100});
             }
     }).then(function(results){
         res.redirect("/class/"+req.params.class);

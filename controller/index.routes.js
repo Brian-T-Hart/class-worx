@@ -139,8 +139,9 @@ router.post("/newstudent" , (req, res, done) =>{
             student_image: "/assets/images/portrait.png",
             student_gender: req.body.selectGender,
             student_gradeLevel: req.body.selectGrade,
-            student_score: 0,
+            student_score: 300,
             student_hallPass: 2,
+            student_homeworkPass: 1,
             student_active: true
         }).then(function(results){
 

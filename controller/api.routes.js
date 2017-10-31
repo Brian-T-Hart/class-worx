@@ -52,4 +52,38 @@ router.put("/homeworkPass/:class/:id/:passes", function(req, res) {
     });
 });
 
+
+// // route to edit a student's info in the database
+// router.put("/editStudent/:class/:id" , (req, res, done) =>{
+//     if(req.isAuthenticated()){
+//         console.log(res.body);
+//         db.students.update({
+//             // student_lastName: req.body.inputStudentLastName,
+//             // student_firstName: req.body.inputStudentFirstName,
+//             // student_phone: req.body.inputStudentPhone,
+//             // student_email: req.body.inputStudentEmail,
+//             // student_image: req.body.studentImage,
+//             // student_gender: req.body.selectGender,
+//             // student_gradeLevel: req.body.selectGrade,
+//             student_score: req.body.inputStudentScore,
+//             // student_hallPass: req.body.inputStudentHallPass,
+//             // student_homeworkPass: req.body.inputStudentHwPass,
+//             // student_active: req.body.active,
+//             where: {
+//                 studentStudentId: req.params.id
+//             }
+//         }).then(function(results){
+//             alert("student info updated");
+//         // db.schedules.create({
+//         //     classClassId: req.body.classPicker,
+//         //     studentStudentId: results.student_id
+//         }).then(function(results2){
+//             res.redirect("/dashboard")   
+//     });
+//     }
+//     else{
+//         res.redirect("account/login");
+//     }
+// })
+
 module.exports = router;

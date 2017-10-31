@@ -1,4 +1,4 @@
-    {{!-- This page is for adding a new student --}}
+    {{!-- This page is to edit student information --}}
 
 <body>
     <!-- Navbar -->
@@ -31,12 +31,13 @@
 
     <div class="container">
         <div class="jumbotron">
-            <h1>Add Student To Class</h1>
-            <form action="/newStudent" method="POST">
+            <h1>Edit Student Info</h1>
+            <form action="/editStudent/{{classes.0.schedules.0.student.student_id}}" method="POST">
                 <div class="form-row">
                     <div class="form-group col-4">
                         <select class="selectpicker" class="form-control" name="classPicker" id="classPicker" required>
                             <option value=''>Select Class:</option>
+                            <option value="{{classes.0.class_id}}" selected> Period: {{classes.0.class_period}} Class Name:{{classes.0.class_name}}</option>
                             {{#each classes}}
                             <option value={{this.class_id}}>Period: {{this.class_period}} Class Name:{{this.class_name}}</option>
                             {{/each}}
@@ -45,6 +46,7 @@
                     <div class="form-group col-2">
                         <select class="selectpicker" class="form-control" name="selectGrade" id="selectGrade" required>
                             <option value=''>Select Grade</option>
+                            <option value="{{classes.0.schedules.0.student.student_gradeLevel}}" selected>{{classes.0.schedules.0.student.student_gradeLevel}}</option>
                             <option value="K">K</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -63,6 +65,7 @@
                     <div class="form-group col-3">
                         <select class="selectpicker" class="form-control" name="selectGender" id="selectGender" required>
                             <option value=''>Gender</option>
+                            <option value="{{classes.0.schedules.0.student.student_gender}}" selected>{{classes.0.schedules.0.student.student_gender}}</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
@@ -71,23 +74,39 @@
                 <div class="form-row">
                     <div class="form-group col-6">
                         <label for="inputStudentFirstName" class="col-form-label">First Name: </label>
-                        <input type="text" class="form-control" name="inputStudentFirstName" id="inputStudentFirstName" placeholder="First Name"
+                        <input value="{{classes.0.schedules.0.student.student_firstName}}" type="text" class="form-control" name="inputStudentFirstName" id="inputStudentFirstName" placeholder="First Name"
                             required>
                     </div>
                     <div class="form-group col-6">
                         <label for="inputStudentLastName" class="col-form-label">Last Name: </label>
-                        <input type="text" class="form-control" name="inputStudentLastName" id="inputStudentLastName" placeholder="Last Name" required>
+                        <input type="text" value="{{classes.0.schedules.0.student.student_lastName}}" class="form-control" name="inputStudentLastName" id="inputStudentLastName" placeholder="Last Name" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-6">
                         <label for="inputStudentEmail" class="col-form-label">Email: </label>
-                        <input type="email" class="form-control" name="inputStudentEmail" id="inputStudentEmail" placeholder="studentemail@email.com"
+                        <input value="{{classes.0.schedules.0.student.student_email}}" type="email" class="form-control" name="inputStudentEmail" id="inputStudentEmail" placeholder="Email"
                             required>
                     </div>
                     <div class="form-group col-6">
                         <label for="inputStudentPhone" class="col-form-label">Phone: </label>
-                        <input type="text" class="form-control" name="inputStudentPhone" id="inputStudentPhone" placeholder="555-555-5555">
+                        <input value="{{classes.0.schedules.0.student.student_phone}}" type="text" class="form-control" name="inputStudentPhone" id="inputStudentPhone" placeholder="555-555-5555">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-4">
+                        <label for="inputStudentScore" class="col-form-label">Score: </label>
+                        <input value="{{classes.0.schedules.0.student.student_score}}" type="number" class="form-control" name="inputStudentScore" id="inputStudentScore" placeholder="student score"
+                            required>
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="inputStudentHallPass" class="col-form-label">Hall Passes: </label>
+                        <input value="{{classes.0.schedules.0.student.student_hallPass}}" type="text" class="form-control" name="inputStudentHallPass" id="inputStudentHallPass" placeholder="Hall Passes">
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="inputStudentHomeworkPass" class="col-form-label">HW Passes: </label>
+                        <input value="{{classes.0.schedules.0.student.student_homeworkPass}}" type="number" class="form-control" name="inputStudentHomeworkPass" id="inputStudentHomeworkPass" placeholder="Homework Passes">
                     </div>
                 </div>
                 {{!--
@@ -95,9 +114,9 @@
                     <label for="inputStudentImage" class="col-form-label">Student Image: </label>
                     <input type="text" class="form-control" id="inputStudentImage" placeholder="Copy and Paste Image URL">
                 </div> --}}
-                <div class="form-row">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                {{!-- <div class="form-row">
+                </div> --}}
+                <button action="#" type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>

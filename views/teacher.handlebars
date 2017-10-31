@@ -1,5 +1,7 @@
-<body>
 
+    {{!-- This page displays the list of classes --}}
+
+<body>
     <!-- Navbar -->
     <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -31,9 +33,11 @@
     <!-- Page Content -->
     <div class="container">
         <div class="row">
-            <h1 class="col-10">Class List</h1>
+            <h1 class="col-10">Class List
+            </h1>
             <span class="col-2">
-                <button class="btn btn-primary pull-right" type="button" data-toggle="modal" data-target="#addClassModal">Add Class</button>
+                <button class="btn btn-primary pull-right" type="button" data-toggle="modal" data-target="#addClassModal">Add Class
+                </button>
             </span>
         </div>
     </div>
@@ -63,7 +67,8 @@
                                 {{!-- <td>{{this.class_score}}</td> --}}
                                 <td>
                                     <form action="/class/{{this.class_id}}" method="get" type="hidden">
-                                        <button type="submit" class="btn btn-primary">View Class</button>
+                                        <button type="submit" class="btn btn-primary">View Class
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -74,6 +79,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="addClassModal" role="dialog">
         <div class="modal-dialog">
 
@@ -101,5 +107,3 @@
         </div>
     </div>
 </body>
-
-</html>

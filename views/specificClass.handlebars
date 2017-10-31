@@ -1,3 +1,6 @@
+
+    {{!-- This page displays the students for a specific class --}}
+
 <body>
     <!-- Navbar -->
     <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
@@ -58,12 +61,12 @@
                             <tr>
                                 <td>
                                     <!-- Trigger the modal with a button -->
-                                    <button type="button" data-toggle="modal" data-target="#studentModal" +{{this.student_id}}>
+                                    <button type="button" data-toggle="modal" data-target="#studentModal{{this.student_id}}">
                                         <img class="icon img-responsive" src="{{this.student_image}}" alt="">
                                     </button>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="studentModal" + {{this.student_id}} role="dialog">
+                                    <div class="modal fade" id="studentModal{{this.student_id}}" role="dialog">
                                         <div class="modal-dialog">
 
                                             <!-- Modal content-->
@@ -78,57 +81,59 @@
                                                     <p id="studentGrade">Grade: {{this.student_gradeLevel}}</p>
                                                 </div>
                                                 <div class="modal-footer">
+                                                    <form action="/editStudent/{{this.schedules.0.class.class_id}}/{{this.student_id}}" method="GET">
+                                                        <button action="#" type="submit" class="btn btn-default">edit</button>
+                                                    </form>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </td>
-                                    <td><h4>{{this.student_firstName}} {{this.student_lastName}}</h4></td>
-                                    <td>
-                                        <h4 id="student-points">
-                                            Score: {{this.student_score}}
-                                        </h4>
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
-                                                <button type="submit" class="btn btn-secondary">+1</button>
-                                            </form>
-                                            <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/10?_method=PUT" method="POST">
-                                                <button type="submit" class="btn btn-secondary">+10</button>
-                                            </form>
-                                            <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
-                                                <button type="submit" class="btn btn-secondary">-1</button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <h4 id="hall-pass">
-                                            Hall Passes: {{this.student_hallPass}}
-                                        </h4>
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
-                                                <button type="submit" class="btn btn-secondary">+1</button>
-                                            </form>
-                                            <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
-                                                <button type="submit" class="btn btn-secondary">-1</button>
-                                            </form>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <h4 id="HW-pass">
-                                            HW Pass: {{this.student_homeworkPass}}
-                                        </h4>
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            <form action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
-                                                <button type="submit" class="btn btn-secondary">+1</button>
-                                            </form>
-                                            <form action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
-                                                <button type="submit" class="btn btn-secondary">-1</button>
-                                            </form>
-                                        </div>
-                                    </td>
-
-                                </tr>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h4>{{this.student_firstName}} {{this.student_lastName}}
+                                    </h4>
+                                </td>
+                                <td>
+                                    <h4 id="student-points">Score: {{this.student_score}}
+                                    </h4>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
+                                            <button type="submit" class="btn btn-secondary">+1</button>
+                                        </form>
+                                        <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/10?_method=PUT" method="POST">
+                                            <button type="submit" class="btn btn-secondary">+10</button>
+                                        </form>
+                                        <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
+                                            <button type="submit" class="btn btn-secondary">-1</button>
+                                        </form>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h4 id="hall-pass">Hall Passes: {{this.student_hallPass}}
+                                    </h4>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
+                                            <button type="submit" class="btn btn-secondary">+1</button>
+                                        </form>
+                                        <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
+                                            <button type="submit" class="btn btn-secondary">-1</button>
+                                        </form>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h4 id="HW-pass">HW Pass: {{this.student_homeworkPass}}
+                                    </h4>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <form action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
+                                            <button type="submit" class="btn btn-secondary">+1</button>
+                                        </form>
+                                        <form action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
+                                            <button type="submit" class="btn btn-secondary">-1</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
                                 <!--end Placeholder row1-->
                                 {{/if}}
                             {{/each}}
@@ -139,5 +144,3 @@
         </div>
     </div>
 </body>
-
-</html>

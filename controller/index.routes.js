@@ -144,7 +144,6 @@ router.post("/newstudent" , (req, res, done) =>{
             student_homeworkPass: 1,
             student_active: true
         }).then(function(results){
-
         db.schedules.create({
             classClassId: req.body.classPicker,
             studentStudentId: results.student_id
@@ -154,6 +153,58 @@ router.post("/newstudent" , (req, res, done) =>{
     });
     }else{
         res.redirect("account/login");
+    }
+})
+
+router.get('/editStudent/:class/:id', (req,res,next) => {
+    if(req.isAuthenticated()){
+        db.classes.findAll({
+            where:{
+                class_id: req.params.class,
+            },
+            include:[{
+                model: db.schedules,
+                include:[{
+                    model: db.students,
+                    where:
+                       { student_id: req.params.id }
+                }]
+            }]
+        }).then(function(results){
+            var studentInfo = {classes: results}
+            res.render('editStudent', studentInfo);
+            // res.json(results[0].schedules[0].student.student_firstName);
+            // res.json(results);
+        });
+    }else{
+        res.redirect("/account/login");
+    }
+});
+
+// post to create a new class
+router.post('/editStudent/:id', (req, res, next) =>{
+    if(req.isAuthenticated()){
+        console.log("request body: " + req.body);
+        db.students.update({
+            student_lastName: req.body.inputStudentLastName,
+            student_firstName: req.body.inputStudentFirstName,
+            student_phone: req.body.inputStudentPhone,
+            student_email: req.body.inputStudentEmail,
+            student_gender: req.body.selectGender,
+            student_gradeLevel: req.body.selectGrade,
+            student_hallPass: req.body.inputStudentHallPass,
+            student_homeworkPass: req.body.inputStudentHomeworkPass,
+            student_score: req.body.inputStudentScore,
+            student_gender: req.body.selectGender},
+           { where: {
+                student_id: req.params.id
+            }
+        }).then(function(results){
+            console.log("post complete");
+            res.redirect('/dashboard');
+        });
+    }else{
+        res.redirect("/account/login");        
     }
 })
 

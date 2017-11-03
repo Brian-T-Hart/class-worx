@@ -98,9 +98,12 @@ router.get('/students', (req,res,next) => {
                     where:
                        {}
                 }]
-            }]
+            }],
+            // order: db.sequelize.col('student_lastName')
         }).then(function(results){
-            res.json(results);
+            // res.json(results);
+            var classList = { classes: results };
+            res.render('allStudents', classList);
         });
     }else{
         res.redirect("/account/login");
@@ -181,7 +184,7 @@ router.get('/editStudent/:class/:id', (req,res,next) => {
     }
 });
 
-// post to create a new class
+// post to edit student info
 router.post('/editStudent/:id', (req, res, next) =>{
     if(req.isAuthenticated()){
         console.log("request body: " + req.body);
@@ -195,7 +198,8 @@ router.post('/editStudent/:id', (req, res, next) =>{
             student_hallPass: req.body.inputStudentHallPass,
             student_homeworkPass: req.body.inputStudentHomeworkPass,
             student_score: req.body.inputStudentScore,
-            student_gender: req.body.selectGender},
+            student_gender: req.body.selectGender,
+            student_active: req.body.studentActive},
            { where: {
                 student_id: req.params.id
             }
@@ -205,6 +209,25 @@ router.post('/editStudent/:id', (req, res, next) =>{
         });
     }else{
         res.redirect("/account/login");        
+    }
+})
+
+router.post('/editNotes/:class/:id', (req, res, next) => {
+    if (req.isAuthenticated()) {
+        console.log("request body: " + req.body);
+        db.students.update({
+            student_notes: req.body.inputStudentNotes
+        },
+            {
+                where: {
+                    student_id: req.params.id
+                }
+            }).then(function (results) {
+                console.log("post complete");
+                res.redirect("/class/" + req.params.class);
+            });
+    } else {
+        res.redirect("/account/login");
     }
 })
 

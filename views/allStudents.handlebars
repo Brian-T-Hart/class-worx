@@ -60,12 +60,12 @@
                             {{#each students}} {{#if this.student_active}}
                             <tr>
                                 <td>
-                                    <!-- Trigger modal with a button -->
+                                    <!-- Trigger the modal with a button -->
                                     <button type="button" data-toggle="modal" data-target="#studentModal{{this.student_id}}">
                                         <img class="icon img-responsive" src="{{this.student_image}}" alt="">
                                     </button>
 
-                                    <!-- Student info Modal -->
+                                    <!-- Modal -->
                                     <div class="modal fade" id="studentModal{{this.student_id}}" role="dialog">
                                         <div class="modal-dialog">
 
@@ -88,37 +88,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </td>
                                 <td>
-                                    <h4>{{this.student_firstName}} {{this.student_lastName}}</h4>
-                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#notesModal{{this.student_id}}">notes</button>
-                                    
-                                    <!-- Notes Modal -->
-                                    <div class="modal fade" id="notesModal{{this.student_id}}" role="dialog">
-                                        <div class="modal-dialog">
-
-                                            <!-- Notes Modal content-->
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title">Notes for {{this.student_firstName}}&nbsp;{{this.student_lastName}}</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="form-row">
-                                                        <div class="form-group col-12">
-                                                            <form action="/editNotes/{{this.schedules.0.class.class_id}}/{{this.student_id}}" method="POST">
-                                                                <textarea class="form-control" name="inputStudentNotes" rows="20" id="inputStudentNotes" placeholder="student notes">{{this.student_notes}}</textarea>
-                                                                <br>
-                                                                <button action="#" type="submit" class="btn btn-default">save</button>
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <h4>{{this.student_firstName}} {{this.student_lastName}}
+                                    </h4>
                                 </td>
                                 <td>
                                     <h4 id="student-points">Score: {{this.student_score}}
@@ -136,7 +110,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h4 id="hall-pass">Hall Pass: {{this.student_hallPass}}
+                                    <h4 id="hall-pass">Hall Passes: {{this.student_hallPass}}
                                     </h4>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">

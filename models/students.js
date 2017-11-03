@@ -61,6 +61,10 @@ var students = sequelize.define("students", {
     allowNull: false,
     defaultValue: 1,
   },
+  student_notes: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   student_active: {
     type: DataTypes.BOOLEAN,
     allowNull: false,

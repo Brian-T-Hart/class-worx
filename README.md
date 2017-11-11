@@ -24,7 +24,7 @@ If you want to download this repository and open it locally, there are no prereq
 * **Brian Hart** - *Developer* - [tgwalker93](https://github.com/tgwalker93)
 * **Tammy Le** - *Front-End Developer* - [letam245](https://github.com/letam245)
 * **David Luu** - *Front-End Developer* - [chrisjal](https://github.com/chrisjal)
-* **Omar Solis** - *Firebase Developer* - [yakoloi](https://github.com/chunchuprati)
+* **Omar Solis** - *Firebase Developer* - [yakoloi](https://github.com/yakoloi)
 
 ---
 

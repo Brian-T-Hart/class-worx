@@ -5,7 +5,7 @@ A tool for educators to keep track of students and classes.
 
 ## Getting Started
 
-You can refer to the link here to see the application deployed on Heroku: 
+You can refer to the link here to see the application deployed on Heroku: https://class-worx.herokuapp.com/
 
 ### Prerequisites
 

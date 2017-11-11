@@ -22,7 +22,6 @@ If you want to download this repository and open it locally, there are no prereq
 ## Authors
 
 * **Brian Hart** - *Developer* - [bdoggincali](https://github.com/bdoggincali)
-* **Nathan Quick ** - *Developer* - [letam245](https://github.com/letam245)
 * **Mathew Bellenic** - *SQL Database* - [mjbelanic](https://github.com/mjbelanic)
 * **Omar Solis** - *Frontend Developer* - [yakoloi](https://github.com/yakoloi)
 

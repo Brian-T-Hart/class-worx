@@ -24,6 +24,7 @@ If you want to download this repository and open it locally, there are no prereq
 * **Brian Hart** - *Developer* - [bdoggincali](https://github.com/bdoggincali)
 * **Mathew Bellenic** - *SQL Database* - [mjbelanic](https://github.com/mjbelanic)
 * **Omar Solis** - *Frontend Developer* - [yakoloi](https://github.com/yakoloi)
+* **Nathan Quick** - *Developer* - [nquickact](https://github.com/nquickact)
 
 ---
 

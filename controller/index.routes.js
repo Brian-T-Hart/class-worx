@@ -231,4 +231,43 @@ router.post('/editNotes/:class/:id', (req, res, next) => {
     }
 })
 
+router.get('/editClass/:id', (req, res, next) => {
+    if (req.isAuthenticated()) {
+        db.classes.findAll({
+            where: {
+                class_id: req.params.id,
+            },
+        }).then(function (results) {
+            console.log(results);
+            var classInfo = { class: results }
+            res.render('editClass', classInfo);
+            // res.json(results);
+        });
+    } else {
+        res.redirect("/account/login");
+    }
+});
+
+// post to edit student info
+router.post('/editClass/:id', (req, res, next) => {
+    if (req.isAuthenticated()) {
+        console.log("request body: " + req.body);
+        db.classes.update({
+            class_name: req.body.className,
+            class_subject: req.body.classSubject,
+            class_period: req.body.classPeriod
+        },
+            {
+                where: {
+                    class_id: req.params.id
+                }
+            }).then(function (results) {
+                console.log("post complete");
+                res.redirect('/dashboard');
+            });
+    } else {
+        res.redirect("/account/login");
+    }
+})
+
 module.exports = router;

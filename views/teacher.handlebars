@@ -71,6 +71,12 @@
                                         </button>
                                     </form>
                                 </td>
+                                <td id="editColumn">
+                                    <form action="/editClass/{{this.class_id}}" method="get" type="hidden">
+                                        <button id="editClassBtn" class="btn" type="submit">Edit
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                             {{/if}} {{/each}}
                         </tbody>

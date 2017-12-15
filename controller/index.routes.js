@@ -3,6 +3,13 @@ var path = require("path");
 var router = express.Router();
 var db = require("../models");
 var passport = require("passport");
+var cloudinary = require('cloudinary');
+
+cloudinary.config({
+    cloud_name: 'dfonttj4w',
+    api_key: '122777653667279',
+    api_secret: 'e1h1VMQZUQl7I9R2wfhrMcsXAWs'
+});
 
 router.get('/', (req, res, next) => {
     if(req.isAuthenticated()){
@@ -268,6 +275,33 @@ router.post('/editClass/:id', (req, res, next) => {
     } else {
         res.redirect("/account/login");
     }
-})
+});
+
+router.get('/exampleImage', (req, res, next) => {
+    if (req.isAuthenticated()) {
+        console.log('posting image');
+        cloudinary.v2.uploader.upload("http://coloringpages2015.com/wp-content/uploads/2014/05/barbie-mermaid-tale-coloring-pages-zuma-and-merliah-playing-429598.jpg", { public_id: "student_id" },
+            function (error, result) { 
+                if (error) {
+                    console.log(error)
+                }
+                else {
+                    console.log("result ", result);
+                    console.log("secure_url ", result.secure_url)
+                }
+            })        
+            .then(function (results) {
+                // console.log('picture posted', results);
+                // res.redirect("/exampleImage");
+                // res.json(results);
+                var imageInfo = { image: results }
+                res.render('exampleImage', imageInfo);
+            })
+    }
+    else {
+        res.redirect("/account/login"); 
+    }
+});
+
 
 module.exports = router;

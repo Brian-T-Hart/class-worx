@@ -192,7 +192,7 @@ router.get('/editStudent/:class/:id', (req,res,next) => {
 });
 
 // post to edit student info
-router.post('/editStudent/:id', (req, res, next) =>{
+router.post('/editStudent/:class/:id', (req, res, next) =>{
     if(req.isAuthenticated()){
         console.log("request body: " + req.body);
         db.students.update({
@@ -201,6 +201,7 @@ router.post('/editStudent/:id', (req, res, next) =>{
             student_phone: req.body.inputStudentPhone,
             student_email: req.body.inputStudentEmail,
             student_gender: req.body.selectGender,
+            student_image: req.body.inputStudentImage,
             student_gradeLevel: req.body.selectGrade,
             student_hallPass: req.body.inputStudentHallPass,
             student_homeworkPass: req.body.inputStudentHomeworkPass,
@@ -212,7 +213,7 @@ router.post('/editStudent/:id', (req, res, next) =>{
             }
         }).then(function(results){
             console.log("post complete");
-            res.redirect('/dashboard');
+            res.redirect('/class/' + req.params.class);
         });
     }else{
         res.redirect("/account/login");        

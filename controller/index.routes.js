@@ -146,7 +146,7 @@ router.post("/newstudent" , (req, res, done) =>{
             student_firstName: req.body.inputStudentFirstName,
             student_phone: req.body.inputStudentPhone,
             student_email: req.body.inputStudentEmail,
-            student_image: "/assets/images/portrait.png",
+            student_image: req.body.inputStudentImage,
             student_gender: req.body.selectGender,
             student_gradeLevel: req.body.selectGrade,
             student_score: 300,
@@ -158,7 +158,7 @@ router.post("/newstudent" , (req, res, done) =>{
             classClassId: req.body.classPicker,
             studentStudentId: results.student_id
         }).then(function(results2){
-            res.redirect("/dashboard")
+            res.redirect("/class/" + req.body.classPicker)
         })   
     });
     }else{

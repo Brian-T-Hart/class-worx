@@ -12,11 +12,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    {{!-- <li class="nav-item active">
                         <a class="nav-link" href="/students">Students
                             <span class="sr-only">(current)</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="#">{{students.0.schedules.0.class.teacher.teacher_userName}}</a>
                     </li>
@@ -63,7 +63,7 @@
                                 <td>
                                     <!-- Trigger modal with a button -->
                                     <button type="button" data-toggle="modal" data-target="#studentModal{{this.student_id}}">
-                                        <img class="icon img-responsive" src="{{this.student_image}}" alt="">
+                                        <img class="icon img-responsive" src="{{this.student_image}}" alt="" style="height: 80px; width: auto;">
                                     </button>
 
                                     <!-- Student info Modal -->
@@ -125,14 +125,14 @@
                                     <h4 id="student-points">Score: {{this.student_score}}
                                     </h4>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
-                                            <button type="submit" class="btn btn-secondary">+1</button>
+                                        <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/5?_method=PUT" method="POST">
+                                            <button type="submit" class="btn btn-secondary">+5</button>
                                         </form>
                                         <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/10?_method=PUT" method="POST">
                                             <button type="submit" class="btn btn-secondary">+10</button>
                                         </form>
-                                        <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
-                                            <button type="submit" class="btn btn-secondary">-1</button>
+                                        <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-5?_method=PUT" method="POST">
+                                            <button type="submit" class="btn btn-secondary">-5</button>
                                         </form>
                                     </div>
                                 </td>

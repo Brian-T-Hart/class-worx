@@ -87,6 +87,36 @@ router.get('/class/:id', (req, res, next) =>{
     }
 });
 
+// route to order students from a particular class by points
+router.get('/classbypoints/:id', (req, res, next) => {
+    if (req.isAuthenticated()) {
+        db.students.findAll({
+            order: [['student_score', 'DESC']],
+            include: [{
+                model: db.schedules,
+                where: {
+                    classClassId: req.params.id
+                },
+                include: [{
+                    model: db.classes,
+                    include: [{
+                        model: db.teachers,
+                        where: {
+                            teacher_id: req.user.teacher_id,
+                        }
+                    }],
+                }],
+            }],
+            // order: db.sequelize.col('student_score')
+        }).then(function (results) {
+            var studentList = { students: results }
+            res.render('specificClass', studentList);
+        });
+    } else {
+        res.redirect("/account/login");
+    }
+});
+
 // route to get all students belonging to the teacher
 router.get('/students', (req,res,next) => {
     if(req.isAuthenticated()){

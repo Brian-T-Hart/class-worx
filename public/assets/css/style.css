@@ -9,7 +9,11 @@ body {
 }
 
 tr, th {
-    text-align: center
+    text-align: center;
+}
+
+a {
+  color: #000;
 }
 
 .student-row {

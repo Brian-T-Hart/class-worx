@@ -33,7 +33,7 @@
     <!-- Page Content -->
     <div class="container">
         <div class="row">
-            <h1 class="col-10">{{students.0.schedules.0.class.class_name}} Students</h1>
+            <h2 class="col-10">Period {{students.0.schedules.0.class.class_period}}: {{students.0.schedules.0.class.class_name}}</h2>
             <span class="col-2">
                 <form action="/newStudent" method="GET">
                     <button type="submit" id="add-student" class="btn btn-primary pull-right">Add Student</button>
@@ -62,8 +62,8 @@
                             <tr>
                                 <td>
                                     <!-- Trigger modal with a button -->
-                                    <button type="button" data-toggle="modal" data-target="#studentModal{{this.student_id}}">
-                                        <img class="icon img-responsive" src="{{this.student_image}}" alt="" style="height: 80px; width: auto;">
+                                    <button id="iconImageBtn" type="button" data-toggle="modal" data-target="#studentModal{{this.student_id}}">
+                                        <img class="icon img-responsive" src="{{this.student_image}}" alt="">
                                     </button>
 
                                     <!-- Student info Modal -->
@@ -92,8 +92,10 @@
                                     </div>                                    
                                 </td>
                                 <td>
-                                    <h4>{{this.student_firstName}} {{this.student_lastName}}</h4>
-                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#notesModal{{this.student_id}}">notes</button>
+                                    <h5 id="eachStudentName">{{this.student_firstName}} 
+                                        {{this.student_lastName}}
+                                        </h5>
+                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#notesModal{{this.student_id}}">Notes</button>
                                     
                                     <!-- Notes Modal -->
                                     <div class="modal fade" id="notesModal{{this.student_id}}" role="dialog">
@@ -122,8 +124,8 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h4 id="student-points">Score: {{this.student_score}}
-                                    </h4>
+                                    <h5 id="student-points">{{this.student_score}}
+                                    </h5>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/5?_method=PUT" method="POST">
                                             <button type="submit" class="btn btn-secondary">+5</button>
@@ -137,8 +139,8 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h4 id="hall-pass">Hall Pass: {{this.student_hallPass}}
-                                    </h4>
+                                    <h5 id="hall-pass">{{this.student_hallPass}}
+                                    </h5>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
                                             <button type="submit" class="btn btn-secondary">+1</button>
@@ -149,8 +151,8 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h4 id="HW-pass">HW Pass: {{this.student_homeworkPass}}
-                                    </h4>
+                                    <h5 id="HW-pass">{{this.student_homeworkPass}}
+                                    </h5>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <form action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
                                             <button type="submit" class="btn btn-secondary">+1</button>

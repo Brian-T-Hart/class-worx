@@ -8,13 +8,23 @@ body {
     padding-top: 54px;
 }
 
+.jumbotron {
+  padding: 32px;
+  margin-top: 15px;
+}
+
 tr, th {
     text-align: center;
 }
 
-a {
+th, a {
   color: #000;
+  font-size: 16px;
 }
+
+/* a {
+  color: #000;
+} */
 
 .student-row {
     background: pink;

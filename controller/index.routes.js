@@ -29,6 +29,7 @@ router.get('/dashboard', (req, res, next) =>{
             }],
             where:{
                 teacherTeacherId: req.user.teacher_id,
+                class_active: true
             },
             order: db.sequelize.col('class_period')
         }).then(function(results){
@@ -293,7 +294,8 @@ router.post('/editClass/:id', (req, res, next) => {
         db.classes.update({
             class_name: req.body.className,
             class_subject: req.body.classSubject,
-            class_period: req.body.classPeriod
+            class_period: req.body.classPeriod,
+            class_active: req.body.classActive
         },
             {
                 where: {

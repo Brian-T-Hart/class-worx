@@ -89,6 +89,10 @@ button {
   font-size: 14px;
 }
 
+.btn-secondary {
+  margin: 1px;
+}
+
 #editClassBtn, #resetBtn {
   background: none;
   font-size: 12px;

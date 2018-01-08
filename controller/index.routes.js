@@ -274,10 +274,17 @@ router.get('/editClass/:id', (req, res, next) => {
     if (req.isAuthenticated()) {
         db.classes.findAll({
             where: {
-                class_id: req.params.id,
+                class_id: req.params.id
             },
+            include: [{
+                model: db.teachers,
+                attributes: ['teacher_userName'],
+            where: {
+                teacher_id: req.user.teacher_id,
+                }
+            }]
         }).then(function (results) {
-            console.log(results);
+            console.log(results[0]);
             var classInfo = { class: results }
             res.render('editClass', classInfo);
             // res.json(results);
@@ -306,6 +313,55 @@ router.post('/editClass/:id', (req, res, next) => {
                 res.redirect('/dashboard');
             });
     } else {
+        res.redirect("/account/login");
+    }
+});
+
+
+// reset points for all students of a particular class
+router.post('/reset/:id', (req, res, next) => {
+    if (req.isAuthenticated()) {
+        db.students.findAll({
+            include: [{
+                model: db.schedules,
+                where: {
+                    classClassId: req.params.id
+                },
+                include: [{
+                    model: db.classes,
+                    include: [{
+                        model: db.teachers,
+                        where: {
+                            teacher_id: req.user.teacher_id,
+                        }
+                    }],
+                }],
+            }],
+            order: db.sequelize.col('student_lastName')
+        }).then(function (results) {
+            for (let i = 0; i < results.length; i++) {    
+                if (req.params.id == results[i].schedules[0].classClassId) {
+                    db.students.update({
+                        student_hallPass: 2,
+                        student_homeworkPass: 1,
+                        student_score: 300
+                    },
+                        {
+                            where: {
+                                student_id: results[i].student_id
+                            }
+                        }).then(function (results) {
+                            console.log("post complete");
+                            res.redirect('/class/' + req.params.id);
+                        })
+                    }
+                else {
+                    res.json("something went wrong!")
+                }
+            }
+        })
+    } 
+    else {
         res.redirect("/account/login");
     }
 });

@@ -42,7 +42,7 @@
                     <label for="classPeriod">Class Period: </label>
                     <input name="classPeriod" id="classPeriod" class="form-control" value="{{class.0.class_period}}" placeholder="{{class.0.class_period}}" required="" autofocus="" />
                     <br>
-                    <input type="checkbox" name="classActive" value="false">Archive Class</input>
+                    <input type="checkbox" name="classActive" value="false"> Archive Class</input>
 
                     <!-- Trigger modal with a button -->
                     <button id="resetBtn" class="btn pull-right" type="button" data-toggle="modal" data-target="#resetModal">reset
@@ -67,9 +67,9 @@
                     </div>
                     <div class="modal-footer">
                         <form action="/reset/{{class.0.class_id}}" method="POST">
-                            <button action="#" type="submit" class="btn btn-default">Submit</button>
+                            <button action="#" type="submit" class="btn btn-default">reset</button>
                         </form>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
                     </div>
                 </div>
             </div>

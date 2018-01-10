@@ -33,14 +33,21 @@
         <div class="jumbotron">
             <h1>Edit Class Info</h1>
                 <form action="/editClass/{{class.0.class_id}}" method="POST">
-                    <label for="className">Class Name: </label>
-                    <input name="className" id="className" class="form-control" value="{{class.0.class_name}}" placeholder="{{class.0.class_name}}" required="" autofocus="" />
+                    <div class="form-group">
+                        <label for="className">Class Name: </label>
+                        <input name="className" id="className" class="form-control" value="{{class.0.class_name}}" placeholder="{{class.0.class_name}}" required="" autofocus="" />
+                    </div>
                     <br>
-                    <label for="classSubject">Class Subject: </label>
-                    <input name="classSubject" id="classSubject" class="form-control" value="{{class.0.class_subject}}" placeholder="{{class.0.class_subject}}" required="" autofocus="" />
+                    <div class="form-group">
+                        <label for="classSubject">Class Subject: </label>
+                        <input name="classSubject" id="classSubject" class="form-control" value="{{class.0.class_subject}}" placeholder="{{class.0.class_subject}}"
+                            required="" autofocus="" />
+                    </div>
                     <br>
-                    <label for="classPeriod">Class Period: </label>
-                    <input name="classPeriod" id="classPeriod" class="form-control" value="{{class.0.class_period}}" placeholder="{{class.0.class_period}}" required="" autofocus="" />
+                    <div class="form-group">
+                        <label class="control-label" for="classPeriod">Class Period: </label>
+                        <input type="number" name="classPeriod" id="classPeriod" class="form-control" value="{{class.0.class_period}}" placeholder="{{class.0.class_period}}" required="" autofocus="" />
+                    </div>
                     <br>
                     <input type="checkbox" name="classActive" value="false"> Archive Class</input>
 

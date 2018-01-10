@@ -27,9 +27,6 @@ var students = sequelize.define("students", {
   student_email: {
     type: DataTypes.STRING,
     allowNull: true,
-    validate: {
-        isEmail: true,
-    }
   },
   student_image: {
     type: DataTypes.STRING,

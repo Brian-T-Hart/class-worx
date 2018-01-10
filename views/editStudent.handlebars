@@ -98,12 +98,11 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-6">
-                        <label for="inputStudentEmail" class="col-form-label">Email: </label>
-                        <input value="{{classes.0.schedules.0.student.student_email}}" type="email" class="form-control" name="inputStudentEmail" id="inputStudentEmail" placeholder="Email"
-                            required>
+                        <label for="inputStudentEmail" class="col-form-label">Email (optional): </label>
+                        <input value="{{classes.0.schedules.0.student.student_email}}" type="email" class="form-control" name="inputStudentEmail" id="inputStudentEmail" placeholder="student@email.com">
                     </div>
                     <div class="form-group col-6">
-                        <label for="inputStudentPhone" class="col-form-label">Phone: </label>
+                        <label for="inputStudentPhone" class="col-form-label">Phone (optional): </label>
                         <input value="{{classes.0.schedules.0.student.student_phone}}" type="text" class="form-control" name="inputStudentPhone" id="inputStudentPhone" placeholder="555-555-5555">
                     </div>
                 </div>
@@ -126,16 +125,9 @@
 
                 <div class="form-row">
                     <div class="form-group col-4">
-                        <input type="checkbox" name="studentActive" value="false">Archive Student<br>
+                        <input type="checkbox" name="studentActive" value="false"> Archive Student<br>
                     </div>
                 </div>
-                {{!--
-                <div class="form-group">
-                    <label for="inputStudentImage" class="col-form-label">Student Image: </label>
-                    <input type="text" class="form-control" id="inputStudentImage" placeholder="Copy and Paste Image URL">
-                </div> --}}
-                {{!-- <div class="form-row">
-                </div> --}}
                 <button action="#" type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

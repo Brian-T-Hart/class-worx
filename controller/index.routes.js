@@ -198,27 +198,45 @@ router.post("/newstudent" , (req, res, done) =>{
     }
 })
 
+// route to get info to populate form to edit student info
 router.get('/editStudent/:class/:id', (req,res,next) => {
     if(req.isAuthenticated()){
         db.classes.findAll({
-            where:{
+            where: {
                 teacherTeacherId: req.user.teacher_id,
                 class_active: true,
             },
-            include:[{
-                model: db.schedules,
+            order: db.sequelize.col('class_period')
+        })
+        .then(function(results1){
+            console.log("results1 ", results1);
+            db.classes.findAll({
+                where:{
+                    teacherTeacherId: req.user.teacher_id,
+                    class_active: true,
+                },
                 include:[{
-                    model: db.students,
-                    where:
-                       { student_id: req.params.id }
+                    model: db.schedules,
+                        where: {
+                            studentStudentId: req.params.id
+                        },
+                    include:[{
+                        model: db.students,
+                        where:
+                        { student_id: req.params.id }
+                    }]
                 }]
-            }]
-        }).then(function(results){
-            var studentInfo = {classes: results};
-            console.log(studentInfo);
-            res.render('editStudent', studentInfo);
-        });
-    }else{
+            }).then(function(results2){
+                var studentInfo = {
+                    classes: results2,
+                    class: results1
+                };
+                console.log(studentInfo);
+                res.render('editStudent', studentInfo);
+            });
+        })
+    }
+    else {
         res.redirect("/account/login");
     }
 });

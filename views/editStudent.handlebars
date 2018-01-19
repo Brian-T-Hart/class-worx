@@ -47,7 +47,7 @@
                         <select class="selectpicker" class="form-control" name="classPicker" id="classPicker" required>
                             <option value=''>Select Class:</option>
                             <option value="{{classes.0.class_id}}" selected> Period: {{classes.0.class_period}} Class Name:{{classes.0.class_name}}</option>
-                            {{#each classes}}
+                            {{#each class}}
                             <option value={{this.class_id}}>Period: {{this.class_period}} Class Name:{{this.class_name}}</option>
                             {{/each}}
                         </select>

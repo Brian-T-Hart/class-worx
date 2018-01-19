@@ -6,6 +6,11 @@ module.exports = function(sequelize, DataTypes) {
             autoIncrement: true,
             allowNull: false,
           },
+        schedule_active: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true
+      }
     },
   { timestamps: false });
     schedules.associate = function(models) {

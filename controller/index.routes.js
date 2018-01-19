@@ -66,7 +66,8 @@ router.get('/class/:id', (req, res, next) =>{
             include:[{
                 model: db.schedules,
                 where:{
-                    classClassId: req.params.id
+                    classClassId: req.params.id,
+                    schedule_active: true,
                 },
                 include:[{
                     model: db.classes,
@@ -201,7 +202,8 @@ router.get('/editStudent/:class/:id', (req,res,next) => {
     if(req.isAuthenticated()){
         db.classes.findAll({
             where:{
-                class_id: req.params.class,
+                teacherTeacherId: req.user.teacher_id,
+                class_active: true,
             },
             include:[{
                 model: db.schedules,
@@ -212,10 +214,9 @@ router.get('/editStudent/:class/:id', (req,res,next) => {
                 }]
             }]
         }).then(function(results){
-            var studentInfo = {classes: results}
+            var studentInfo = {classes: results};
+            console.log(studentInfo);
             res.render('editStudent', studentInfo);
-            // res.json(results[0].schedules[0].student.student_firstName);
-            // res.json(results);
         });
     }else{
         res.redirect("/account/login");
@@ -226,30 +227,67 @@ router.get('/editStudent/:class/:id', (req,res,next) => {
 router.post('/editStudent/:class/:id', (req, res, next) =>{
     if(req.isAuthenticated()){
         console.log("request body: " + req.body);
-        db.students.update({
-            student_lastName: req.body.inputStudentLastName,
-            student_firstName: req.body.inputStudentFirstName,
-            student_phone: req.body.inputStudentPhone,
-            student_email: req.body.inputStudentEmail,
-            student_gender: req.body.selectGender,
-            student_image: req.body.inputStudentImage,
-            student_gradeLevel: req.body.selectGrade,
-            student_hallPass: req.body.inputStudentHallPass,
-            student_homeworkPass: req.body.inputStudentHomeworkPass,
-            student_score: req.body.inputStudentScore,
-            student_gender: req.body.selectGender,
-            student_active: req.body.studentActive},
-           { where: {
-                student_id: req.params.id
+        db.schedules.findAll({
+            where: {
+                studentStudentId: req.params.id,
+                classClassId: req.body.classPicker,
             }
-        }).then(function(results){
-            console.log("post complete");
-            res.redirect('/class/' + req.params.class);
-        });
-    }else{
+        })
+        .then(function(results){
+            if (results.length == 0) {
+                console.log("There are no results to display");
+                db.schedules.create({
+                    classClassId: req.body.classPicker,
+                    studentStudentId: req.params.id,
+            })
+            .then(function(results2) {
+                console.log("results ", results2);
+            })
+            }
+            if (req.body.studentActive == "false") {
+                db.schedules.update({
+                    schedule_active: false
+                },
+                    {
+                        where: {
+                            studentStudentId: req.params.id,
+                            classClassId: req.params.class
+                        }
+                    })
+                    .then(function (results3) {
+                        console.log("------------------------------------------------------");
+                        console.log("results of schedule update ", results3);
+                    })
+            }
+            db.students.update({
+                student_lastName: req.body.inputStudentLastName,
+                student_firstName: req.body.inputStudentFirstName,
+                student_phone: req.body.inputStudentPhone,
+                student_email: req.body.inputStudentEmail,
+                student_gender: req.body.selectGender,
+                student_image: req.body.inputStudentImage,
+                student_gradeLevel: req.body.selectGrade,
+                student_hallPass: req.body.inputStudentHallPass,
+                student_homeworkPass: req.body.inputStudentHomeworkPass,
+                student_score: req.body.inputStudentScore,
+                student_gender: req.body.selectGender,
+                // student_active: req.body.studentActive
+            },
+                {
+                    where: {
+                        student_id: req.params.id
+                    }
+                })
+                .then(function (results) {
+                    console.log("post complete");
+                    res.redirect('/class/' + req.params.class);
+                });
+        })  
+    }
+    else {
         res.redirect("/account/login");        
     }
-})
+});
 
 router.post('/editNotes/:class/:id', (req, res, next) => {
     if (req.isAuthenticated()) {

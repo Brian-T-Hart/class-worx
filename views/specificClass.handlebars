@@ -124,17 +124,17 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 id="student-points">{{this.student_score}}
+                                    <h5 id="student-points{{this.student_id}}">{{this.student_score}}
                                     </h5>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/5?_method=PUT" method="POST">
-                                            <button type="submit" class="btn btn-secondary">+5</button>
+                                        <form id="addPointsForm" action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/5?_method=PUT" method="POST">
+                                            <button id="{{this.student_id}}" type="submit" class="btn btn-secondary addPointsBtn">+5</button>
                                         </form>
                                         <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/10?_method=PUT" method="POST">
-                                            <button type="submit" class="btn btn-secondary">+10</button>
+                                            <button id="{{this.student_id}}" type="submit" class="btn btn-secondary">+10</button>
                                         </form>
                                         <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-5?_method=PUT" method="POST">
-                                            <button type="submit" class="btn btn-secondary">-5</button>
+                                            <button id="{{this.student_id}}" type="submit" class="btn btn-secondary">-5</button>
                                         </form>
                                     </div>
                                 </td>
@@ -172,4 +172,18 @@
             </div>
         </div>
     </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+            $("button").click(function () {
+                console.log("id: ",this.id);
+                var x = parseInt(this.innerHTML);
+                var y = parseInt($("#student-points" + this.id).html());
+                var z = x + y;
+            $("#student-points" + this.id).html(z);
+            });
+        });
+
+</script>
+
 </body>

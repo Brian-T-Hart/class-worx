@@ -14,7 +14,8 @@ cloudinary.config({
 router.get('/', (req, res, next) => {
     if(req.isAuthenticated()){
         res.redirect("/dashboard");
-    }else{
+    }
+    else{
         res.redirect("/account/login");
     }
 });
@@ -36,7 +37,8 @@ router.get('/dashboard', (req, res, next) =>{
             var classList = {classes: results}
             res.render('teacher', classList);
         });
-    }else{
+    }
+    else{
         res.redirect("/account/login");
     }
 });
@@ -54,7 +56,8 @@ router.post('/dashboard', (req, res, next) =>{
         }).then(function(results){
             res.redirect('/dashboard');
         });
-    }else{
+    }
+    else{
         res.redirect("/account/login");        
     }
 })
@@ -84,7 +87,8 @@ router.get('/class/:id', (req, res, next) =>{
             var studentList = {students: results}
             res.render('specificClass', studentList);
         });
-    }else{
+    }
+    else{
         res.redirect("/account/login");
     }
 });
@@ -114,7 +118,8 @@ router.get('/classbypoints/:id', (req, res, next) => {
             var studentList = { students: results }
             res.render('specificClass', studentList);
         });
-    } else {
+    }
+    else {
         res.redirect("/account/login");
     }
 });
@@ -144,7 +149,8 @@ router.get('/students', (req,res,next) => {
             var classList = { classes: results };
             res.render('allStudents', classList);
         });
-    }else{
+    }
+    else {
         res.redirect("/account/login");
     }
 });
@@ -165,7 +171,8 @@ router.get('/newstudent' , (req, res, done) => {
         var classNames = {classes: results}
         res.render('newstudent', classNames);
         });
-    }else{
+    }
+    else{
         res.redirect("/account/login");
     }        
 })
@@ -193,7 +200,8 @@ router.post("/newstudent" , (req, res, done) =>{
             res.redirect("/class/" + req.body.classPicker)
         })   
     });
-    }else{
+    }
+    else{
         res.redirect("account/login");
     }
 })
@@ -321,7 +329,8 @@ router.post('/editNotes/:class/:id', (req, res, next) => {
                 console.log("post complete");
                 res.redirect("/class/" + req.params.class);
             });
-    } else {
+    }
+    else {
         res.redirect("/account/login");
     }
 })
@@ -345,7 +354,8 @@ router.get('/editClass/:id', (req, res, next) => {
             res.render('editClass', classInfo);
             // res.json(results);
         });
-    } else {
+    }
+    else {
         res.redirect("/account/login");
     }
 });
@@ -368,7 +378,8 @@ router.post('/editClass/:id', (req, res, next) => {
                 console.log("post complete");
                 res.redirect('/dashboard');
             });
-    } else {
+    }
+    else {
         res.redirect("/account/login");
     }
 });

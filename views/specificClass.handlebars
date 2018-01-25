@@ -151,14 +151,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 id="HW-pass">{{this.student_homeworkPass}}
+                                    <h5 id="hwPass{{this.student_id}}">{{this.student_homeworkPass}}
                                     </h5>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <form action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
-                                            <button type="submit" class="btn btn-secondary hwPassBtn">+1</button>
+                                            <button id="{{this.student_id}}" type="submit" class="btn btn-secondary hwPassBtn">+1</button>
                                         </form>
                                         <form action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
-                                            <button type="submit" class="btn btn-secondary hwPassBtn">-1</button>
+                                            <button id="{{this.student_id}}" type="submit" class="btn btn-secondary hwPassBtn">-1</button>
                                         </form>
                                     </div>
                                 </td>
@@ -194,6 +194,18 @@
                     return;
                 }
             });
+            $(".hwPassBtn").click(function () {
+            console.log("id: ", this.id);
+            var q = parseInt(this.innerHTML);
+            var r = parseInt($("#hwPass" + this.id).html());
+            var s = q + r;
+            if (s >= 0) {
+                $('#hwPass' + this.id).html(s);
+            }
+            else {
+                return;
+            }
+        });
     });
 
 </script>

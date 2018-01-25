@@ -20,6 +20,9 @@ router.put("/points/:class/:id/:points", function(req, res, done) {
             res.redirect("/class/"+req.params.class);
         });
     }
+    else {
+        res.redirect("/account/login");
+    }
 });
 
 // route for updating the number of hall passes
@@ -38,6 +41,9 @@ router.put("/hallpass/:class/:id/:passes", function(req, res) {
             res.redirect("/class/"+req.params.class);
         });
     }
+    else {
+        res.redirect("/account/login");
+    }
 });
 
 // route for updating the number of homework passes
@@ -55,6 +61,9 @@ router.put("/homeworkPass/:class/:id/:passes", function(req, res, done) {
         }).then(function(results){
             res.redirect("/class/"+req.params.class);
         });
+    }
+    else {
+        res.redirect("/account/login");
     }
 });
 

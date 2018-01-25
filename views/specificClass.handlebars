@@ -127,26 +127,26 @@
                                     <h5 id="student-points{{this.student_id}}">{{this.student_score}}
                                     </h5>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <form id="addPointsForm" action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/5?_method=PUT" method="POST">
-                                            <button id="{{this.student_id}}" type="submit" class="btn btn-secondary addPointsBtn">+5</button>
+                                        <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/5?_method=PUT" method="POST">
+                                            <button id="{{this.student_id}}" type="submit" class="btn btn-secondary pointsBtn">+5</button>
                                         </form>
                                         <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/10?_method=PUT" method="POST">
-                                            <button id="{{this.student_id}}" type="submit" class="btn btn-secondary">+10</button>
+                                            <button id="{{this.student_id}}" type="submit" class="btn btn-secondary pointsBtn">+10</button>
                                         </form>
                                         <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-5?_method=PUT" method="POST">
-                                            <button id="{{this.student_id}}" type="submit" class="btn btn-secondary">-5</button>
+                                            <button id="{{this.student_id}}" type="submit" class="btn btn-secondary pointsBtn">-5</button>
                                         </form>
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 id="hall-pass">{{this.student_hallPass}}
+                                    <h5 id="hallPass{{this.student_id}}">{{this.student_hallPass}}
                                     </h5>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
-                                            <button type="submit" class="btn btn-secondary">+1</button>
+                                            <button id="{{this.student_id}}" type="submit" class="btn btn-secondary hallPassBtn">+1</button>
                                         </form>
                                         <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
-                                            <button type="submit" class="btn btn-secondary">-1</button>
+                                            <button id="{{this.student_id}}" type="submit" class="btn btn-secondary hallPassBtn">-1</button>
                                         </form>
                                     </div>
                                 </td>
@@ -155,10 +155,10 @@
                                     </h5>
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <form action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
-                                            <button type="submit" class="btn btn-secondary">+1</button>
+                                            <button type="submit" class="btn btn-secondary hwPassBtn">+1</button>
                                         </form>
                                         <form action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
-                                            <button type="submit" class="btn btn-secondary">-1</button>
+                                            <button type="submit" class="btn btn-secondary hwPassBtn">-1</button>
                                         </form>
                                     </div>
                                 </td>
@@ -175,14 +175,26 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-            $("button").click(function () {
+            $(".pointsBtn").click(function () {
                 console.log("id: ",this.id);
                 var x = parseInt(this.innerHTML);
                 var y = parseInt($("#student-points" + this.id).html());
                 var z = x + y;
-            $("#student-points" + this.id).html(z);
+                $("#student-points" + this.id).html(z);
             });
-        });
+            $(".hallPassBtn").click(function () {
+                console.log("id: ", this.id);
+                var m = parseInt(this.innerHTML);
+                var n = parseInt($("#hallPass" + this.id).html());
+                var p = m + n;
+                if (p >= 0) {
+                    $('#hallPass' + this.id).html(p);
+                }
+                else {
+                    return;
+                }
+            });
+    });
 
 </script>
 

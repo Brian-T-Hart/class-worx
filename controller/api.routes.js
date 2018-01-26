@@ -19,7 +19,6 @@ router.post("/points/:class/:id/:points", function(req, res, done) {
         }).then(function(results){
             console.log("Points were updated successfully!");
             res.send(results);
-            // res.redirect("/class/"+req.params.class);
         });
     }
     else {
@@ -42,7 +41,6 @@ router.post("/hallpass/:class/:id/:passes", function(req, res) {
         }).then(function(results){
             console.log("Hallpasses were updated successfully!");
             res.send(results);
-            // res.redirect("/class/"+req.params.class);
         });
     }
     else {
@@ -65,7 +63,6 @@ router.post("/homeworkPass/:class/:id/:passes", function(req, res, done) {
         }).then(function(results){
             console.log("HW Pass was updated successfully!");
             res.send(results);
-            // res.redirect("/class/"+req.params.class);
         });
     }
     else {

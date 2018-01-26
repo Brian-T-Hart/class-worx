@@ -5,7 +5,7 @@ var db = require("../models");
 var passport = require("passport");
 
 // PUT route for updating student points via buttons
-router.put("/points/:class/:id/:points", function(req, res, done) {
+router.post("/points/:class/:id/:points", function(req, res, done) {
     if (req.isAuthenticated()) {
         var points = parseInt(req.params.points);
         db.students.findById(req.params.id).then( student => {
@@ -17,7 +17,9 @@ router.put("/points/:class/:id/:points", function(req, res, done) {
                 return student.increment( "student_score" , {by: points});
                 }
         }).then(function(results){
-            res.redirect("/class/"+req.params.class);
+            console.log("Points were updated successfully!");
+            res.send(results);
+            // res.redirect("/class/"+req.params.class);
         });
     }
     else {
@@ -26,7 +28,7 @@ router.put("/points/:class/:id/:points", function(req, res, done) {
 });
 
 // route for updating the number of hall passes
-router.put("/hallpass/:class/:id/:passes", function(req, res) {
+router.post("/hallpass/:class/:id/:passes", function(req, res) {
     if (req.isAuthenticated()) {
         var passes = parseInt(req.params.passes);
         db.students.findById(req.params.id).then( student => {
@@ -38,7 +40,9 @@ router.put("/hallpass/:class/:id/:passes", function(req, res) {
                 return student.increment( "student_hallpass" , {by: passes}), student.increment( "student_score" , {by: -100});
                 }
         }).then(function(results){
-            res.redirect("/class/"+req.params.class);
+            console.log("Hallpasses were updated successfully!");
+            res.send(results);
+            // res.redirect("/class/"+req.params.class);
         });
     }
     else {
@@ -47,7 +51,7 @@ router.put("/hallpass/:class/:id/:passes", function(req, res) {
 });
 
 // route for updating the number of homework passes
-router.put("/homeworkPass/:class/:id/:passes", function(req, res, done) {
+router.post("/homeworkPass/:class/:id/:passes", function(req, res, done) {
     if (req.isAuthenticated()) {
         var passes = parseInt(req.params.passes);
         db.students.findById(req.params.id).then( student => {
@@ -59,7 +63,9 @@ router.put("/homeworkPass/:class/:id/:passes", function(req, res, done) {
                 return student.increment( "student_homeworkPass" , {by: passes}), student.increment( "student_score" , {by: -100});
                 }
         }).then(function(results){
-            res.redirect("/class/"+req.params.class);
+            console.log("HW Pass was updated successfully!");
+            res.send(results);
+            // res.redirect("/class/"+req.params.class);
         });
     }
     else {

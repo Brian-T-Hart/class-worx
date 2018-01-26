@@ -127,13 +127,13 @@
                                     <h5 id="student-points{{this.student_id}}">{{this.student_score}}
                                     </h5>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/5?_method=PUT" method="POST">
+                                        <form class="updateValueForm" action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/5" method="POST">
                                             <button id="{{this.student_id}}" type="submit" class="btn btn-secondary pointsBtn">+5</button>
                                         </form>
-                                        <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/10?_method=PUT" method="POST">
+                                        <form class="updateValueForm" action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/10" method="POST">
                                             <button id="{{this.student_id}}" type="submit" class="btn btn-secondary pointsBtn">+10</button>
                                         </form>
-                                        <form action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-5?_method=PUT" method="POST">
+                                        <form class="updateValueForm" action="/api/points/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-5" method="POST">
                                             <button id="{{this.student_id}}" type="submit" class="btn btn-secondary pointsBtn">-5</button>
                                         </form>
                                     </div>
@@ -142,10 +142,10 @@
                                     <h5 id="hallPass{{this.student_id}}">{{this.student_hallPass}}
                                     </h5>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
+                                        <form class="updateValueForm" action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1" method="POST">
                                             <button id="{{this.student_id}}" type="submit" class="btn btn-secondary hallPassBtn">+1</button>
                                         </form>
-                                        <form action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
+                                        <form class="updateValueForm" action="/api/hallpass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1" method="POST">
                                             <button id="{{this.student_id}}" type="submit" class="btn btn-secondary hallPassBtn">-1</button>
                                         </form>
                                     </div>
@@ -154,10 +154,10 @@
                                     <h5 id="hwPass{{this.student_id}}">{{this.student_homeworkPass}}
                                     </h5>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <form action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1?_method=PUT" method="POST">
+                                        <form class="updateValueForm" action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/1" method="POST">
                                             <button id="{{this.student_id}}" type="submit" class="btn btn-secondary hwPassBtn">+1</button>
                                         </form>
-                                        <form action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1?_method=PUT" method="POST">
+                                        <form class="updateValueForm" action="/api/homeworkPass/{{this.schedules.0.class.class_id}}/{{this.student_id}}/-1" method="POST">
                                             <button id="{{this.student_id}}" type="submit" class="btn btn-secondary hwPassBtn">-1</button>
                                         </form>
                                     </div>
@@ -178,14 +178,18 @@
             $(".pointsBtn").click(function () {
                 console.log("id: ",this.id);
                 var x = parseInt(this.innerHTML);
+                console.log("x: ", x);
                 var y = parseInt($("#student-points" + this.id).html());
+                console.log("y: ", y);
                 var z = x + y;
                 $("#student-points" + this.id).html(z);
             });
             $(".hallPassBtn").click(function () {
                 console.log("id: ", this.id);
                 var m = parseInt(this.innerHTML);
+                console.log("m: ", m);
                 var n = parseInt($("#hallPass" + this.id).html());
+                console.log("n: ", n);
                 var p = m + n;
                 if (p >= 0) {
                     $('#hallPass' + this.id).html(p);
@@ -197,7 +201,9 @@
             $(".hwPassBtn").click(function () {
             console.log("id: ", this.id);
             var q = parseInt(this.innerHTML);
+            console.log("q: ", q);
             var r = parseInt($("#hwPass" + this.id).html());
+            console.log("r: ", r);
             var s = q + r;
             if (s >= 0) {
                 $('#hwPass' + this.id).html(s);
@@ -205,6 +211,21 @@
             else {
                 return;
             }
+        });
+        $(".updateValueForm").submit(function (e) {
+            e.preventDefault();
+            console.log(this);
+            console.log("this method: ", this.method);
+            console.log("this action: ", this.action);
+            $.post(this.action,
+                {
+                    name: "Donald Duck"
+                },
+                function (response, status) {
+                    console.log("response: ", response);
+                    console.log("student_score: ", response.student_score);
+                    console.log("Status: ", status);
+                });
         });
     });
 

@@ -176,37 +176,46 @@
 <script type="text/javascript">
     $(document).ready(function () {
             $(".pointsBtn").click(function () {
-                console.log("id: ",this.id);
                 var x = parseInt(this.innerHTML);
-                console.log("x: ", x);
                 var y = parseInt($("#student-points" + this.id).html());
-                console.log("y: ", y);
                 var z = x + y;
                 $("#student-points" + this.id).html(z);
             });
             $(".hallPassBtn").click(function () {
-                console.log("id: ", this.id);
                 var m = parseInt(this.innerHTML);
-                console.log("m: ", m);
                 var n = parseInt($("#hallPass" + this.id).html());
-                console.log("n: ", n);
                 var p = m + n;
                 if (p >= 0) {
                     $('#hallPass' + this.id).html(p);
+                    var l = parseInt($("#student-points" + this.id).html());
+                    if (m > 0) {    
+                        var addPoints = l + 100;
+                        $("#student-points" + this.id).html(addPoints);
+                    }
+                    if (m < 0 && n >= 0) {
+                    var subPoints = l - 100;
+                    $("#student-points" + this.id).html(subPoints);
+                    }
                 }
                 else {
                     return;
                 }
             });
             $(".hwPassBtn").click(function () {
-            console.log("id: ", this.id);
             var q = parseInt(this.innerHTML);
-            console.log("q: ", q);
             var r = parseInt($("#hwPass" + this.id).html());
-            console.log("r: ", r);
             var s = q + r;
             if (s >= 0) {
                 $('#hwPass' + this.id).html(s);
+                var l = parseInt($("#student-points" + this.id).html());
+                if (q > 0) {
+                    var addPoints = l + 100;
+                    $("#student-points" + this.id).html(addPoints);
+                }
+                if (q < 0 && r >= 0) {
+                    var subPoints = l - 100;
+                    $("#student-points" + this.id).html(subPoints);
+                }
             }
             else {
                 return;
@@ -214,16 +223,12 @@
         });
         $(".updateValueForm").submit(function (e) {
             e.preventDefault();
-            console.log(this);
-            console.log("this method: ", this.method);
-            console.log("this action: ", this.action);
             $.post(this.action,
                 {
                     name: "Donald Duck"
                 },
                 function (response, status) {
                     console.log("response: ", response);
-                    console.log("student_score: ", response.student_score);
                     console.log("Status: ", status);
                 });
         });

@@ -179,7 +179,9 @@
                 var x = parseInt(this.innerHTML);
                 var y = parseInt($("#student-points" + this.id).html());
                 var z = x + y;
+                if (z >= 0) {
                 $("#student-points" + this.id).html(z);
+                }
             });
             $(".hallPassBtn").click(function () {
                 var m = parseInt(this.innerHTML);

@@ -136,3 +136,8 @@ button {
   width: 100px;
 }
 
+#loginErrorMessage {
+  color: #ff0000;
+  text-align: center;
+  margin: 20px 10px 0px 10px;
+}

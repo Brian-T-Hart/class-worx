@@ -1,6 +1,6 @@
 var passport = require('passport');
 var bcrypt = require('bcrypt-nodejs');
-const LocalStrategy = require('passport-local').Strategy
+const LocalStrategy = require('passport-local').Strategy;
 var db = require('./models');
 
 const authenticate = (email, password, done) =>{
@@ -9,12 +9,14 @@ const authenticate = (email, password, done) =>{
           teacher_email: email,
         }
       }).then(teacher => {
-        if (!teacher || !bcrypt.compareSync(password, teacher.teacher_password)) {
-        //if (!teacher || password !== teacher.teacher_password) {
-          console.log("failed to login, but sucess in getting this far.")
-            return done(null, false, {message: 'invalid username/or and password combination'});
-        }
-  
+          if (!teacher) {
+              console.log("username not found.");
+              return done(null, false, { message: 'Incorrect username.' });
+          }
+          if (!bcrypt.compareSync(password, teacher.teacher_password)) {
+              console.log("incorrect password.");
+              return done(null, false, { message: 'Incorrect password.' });
+          } 
         done(null, teacher);
       })
       .catch(done) // pass the error back

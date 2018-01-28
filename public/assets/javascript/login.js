@@ -8,7 +8,7 @@ $(document).ready(function () {
             function (response, status) {
                 console.log('response: ', response);
                 if (response == 'Error') {
-                    $('#loginErrorMessage').html('Incorrect username or password. Please try again!').show();
+                    $('#loginErrorMessage').html('Incorrect username or password.<br> Please try again!').show();
                 }
                 if (response == 'Login Successful') {
                     window.location.replace('/dashboard');

@@ -101,7 +101,8 @@ router.get('/classbypoints/:id', (req, res, next) => {
             include: [{
                 model: db.schedules,
                 where: {
-                    classClassId: req.params.id
+                    classClassId: req.params.id,
+                    schedule_active: true
                 },
                 include: [{
                     model: db.classes,
@@ -226,7 +227,8 @@ router.get('/editStudent/:class/:id', (req,res,next) => {
                 include:[{
                     model: db.schedules,
                         where: {
-                            studentStudentId: req.params.id
+                            studentStudentId: req.params.id,
+                            classClassId: req.params.class
                         },
                     include:[{
                         model: db.students,

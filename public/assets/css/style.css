@@ -1,11 +1,83 @@
+#loginNavbar {
+  background-color: #333a40;
+  height: 80px;
+  margin-bottom: 80px;
+}
+
+#navLogo {
+  color: #fff;
+  font-family: "Georgia", Times, serif;
+  font-size: 40px;
+  letter-spacing: .1em;
+  margin: 4px 0px 0px 40px;
+}
+
+#navLogoX {
+  height: 38px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+/* #loginLogo {
+  width: 50%;
+  height: auto;
+  display: block;
+  margin: auto;
+} */
+
 .form-signin {
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: normal;
+    letter-spacing: .1em;
+    background-color: white;
+    max-width: 400px;
+    padding: 10px 30px 30px 30px;
+    margin: auto;
+}
+
+.form-signin-heading {
+  color: #333;
+}
+
+.required-text-label {
+  font-size: 12px;
+  font-style: italic;
+}
+
+#loginEmail, #loginPassword, .registerInput {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#loginSubmitBtn, #registerSubmitBtn {
+  width: 100px;
+  border-radius: 0px;
+  background-color: #38bad8;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#registerLink, #loginLink {
+  padding: 10px;
+}
+
+#loginErrorMessage {
+  color: #ff0000;
+  font-size: 16px;
+  text-align: center;
+  margin: 10px 0px 20px 0px;
+}
+
+.splash {
+  background-color: #f1f1f1;
+  /* background-image: url("/assets/images/class.png");
+  background-size: cover; */
 }
 
 body {
-    padding-top: 54px;
+  font-family: sans-serif;  
+  padding-top: 54px;
 }
 
 .jumbotron {
@@ -34,8 +106,6 @@ th, a {
 }
 
 * { box-sizing: border-box; }
-
-body { font-family: sans-serif; }
 
 .grid {
   background: #FDD;
@@ -76,7 +146,7 @@ body { font-family: sans-serif; }
   z-index: 2;
 }
 
-a {
+a, #loginLink, #registerLink {
   cursor: pointer;
 }
 
@@ -115,7 +185,11 @@ button {
   margin: auto;
 }
 
-#myTab, #nav-home, #nav-profile {
+/* #nav-home, #nav-profile {
+  max-width: 500px;
+} */
+
+#nav-home, #nav-tabContent, #myTab, .nav {
   max-width: 500px;
 }
 
@@ -127,18 +201,6 @@ button {
   background-color: #f0f0f0;
 }
 
-.splash {
-  background-image: url("/assets/images/class.png");
-  background-size: cover;
-}
-
 #editColumn {
   width: 100px;
-}
-
-#loginErrorMessage {
-  color: #ff0000;
-  font-size: 14px;
-  text-align: center;
-  margin: 0px 0px 10px 0px;
 }

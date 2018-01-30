@@ -1,59 +1,139 @@
     {{!-- This is the sign-in page --}}
-
-<body class="splash">
+<body style="padding-top: 0px" class="splash">
     
-    <div class="container">
-        <div class="row">
-            <div class="col-7">
-                <img src="/assets/images/Logo.png" class="img-fluid" alt="Responsive image">
+    {{!-- navbar --}}
+    <nav id="loginNavbar" class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                
+                <a class="navbar-brand" href="#">
+                    <h1 id="navLogo">ClassWor<img id="navLogoX" src="/assets/images/logox.png" /></h1>
+                </a>
             </div>
-            <div class="col-5">
-                        <nav class="nav nav-tabs" id="myTab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
-                aria-expanded="true">Log In</a>
-            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile">Sign Up</a>
-        </nav>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        </div>
+    </nav>
+
+    {{!-- Main Container --}}
+    <div class="container">
+        <div id="loginDiv" class="row">
+            <div class="col-12">
                 <form id="signinForm" class="form-signin" action="/account/login" method="post">
-                    <h6 id="loginErrorMessage"></h6>
-                    <h2 class="form-signin-heading">Please Log In</h2>
+                    <h5 id="loginErrorMessage"></h5>
+                    <h5 class="form-signin-heading">Sign in to ClassWorx</h5>
+                    <span class="required-text-label" tabindex="0" role="text">All fields are required</span>
                     <label for="loginEmail" class="sr-only">Email address</label>
                     <input name="username" id="loginEmail" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
                     <label for="loginPassword" class="sr-only">Password</label>
                     <input name="password" id="loginPassword" class="form-control" placeholder="Password" required="" type="password">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-                </form>
-
-            </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <form class="form-signin" action="/account/signup" method="post">
-                    <h2 class="form-signin-heading">Please Sign Up</h2>
-                    
-                    <label for="firstName" class="sr-only">First Name:</label>
-                    <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name" required="" autofocus="">
-                    
-                    <label for="lastName" class="sr-only">Last Name: </label>
-                    <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last Name" required="" autofocus="">
-                    
-                    <label for="username" class="sr-only">Username:</label>
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Username" required="" autofocus="">
-                    
-                    <label for="email" class="sr-only">Email Address:</label>
-                    <input name="email" id="email" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
-                    
-                    <label for="password" class="sr-only">Password:</label>
-                    <input name="password" id="password" class="form-control" placeholder="Password" required="" type="password">
-                    
-                    <label for="password2" class="sr-only">Confirm Password:</label>
-                    <input name="password2" id="password2" class="form-control" placeholder="Repeat Password" required="" type="password">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+                    <div class="row">
+                        <div class="col-6">
+                            <button id="loginSubmitBtn" class="btn" type="submit">Log In</button>
+                        </div>
+                        <div class="col-6">
+                            <h6 id="registerLink">register</h6>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
+
+        <div id="registerDiv" class="row" style="display: none">
+            <div class="col-12">
+                <form class="form-signin" action="/account/signup" method="post">
+                    <h5 class="form-signin-heading">Create an Account</h5>
+                    <span class="required-text-label" tabindex="0" role="text">All fields are required</span>
+                    <label for="firstName" class="sr-only">First Name:</label>
+                    <input type="text" name="firstName" id="firstName" class="form-control registerInput" placeholder="First Name" required="" autofocus="">
+                
+                    <label for="lastName" class="sr-only">Last Name: </label>
+                    <input type="text" name="lastName" id="lastName" class="form-control registerInput" placeholder="Last Name" required="" autofocus="">
+                
+                    <label for="username" class="sr-only">Username:</label>
+                    <input type="text" name="username" id="username" class="form-control registerInput" placeholder="Username" required="" autofocus="">
+                
+                    <label for="email" class="sr-only">Email Address:</label>
+                    <input name="email" id="email" class="form-control registerInput" placeholder="Email address" required="" autofocus="" type="email">
+                
+                    <label for="password" class="sr-only">Password:</label>
+                    <input name="password" id="password" class="form-control registerInput" placeholder="Password" required="" type="password">
+                
+                    <label for="password2" class="sr-only">Confirm Password:</label>
+                    <input name="password2" id="password2" class="form-control registerInput" placeholder="Confirm Password" required="" type="password">
+                    <div class="row">
+                        <div class="col-6">
+                            <button id="registerSubmitBtn" class="btn" type="submit">Register</button>
+                        </div>
+                        <div class="col-6">
+                            <h6 id="loginLink">log in</h6>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    {{!-- <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <img id="loginLogo" src="/assets/images/Logo.png" class="img-fluid" alt="Responsive image">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <nav class="nav nav-tabs" id="myTab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
+                    aria-expanded="true">Log In</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile">Sign Up</a>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <form id="signinForm" class="form-signin" action="/account/login" method="post">
+                            <h6 id="loginErrorMessage"></h6>
+                            <h2 class="form-signin-heading">Please Log In</h2>
+                            <label for="loginEmail" class="sr-only">Email address</label>
+                            <input name="username" id="loginEmail" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
+                            <label for="loginPassword" class="sr-only">Password</label>
+                            <input name="password" id="loginPassword" class="form-control" placeholder="Password" required="" type="password">
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <form class="form-signin" action="/account/signup" method="post">
+                            <h2 class="form-signin-heading">Please Sign Up</h2>
+                            
+                            <label for="firstName" class="sr-only">First Name:</label>
+                            <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name" required="" autofocus="">
+                            
+                            <label for="lastName" class="sr-only">Last Name: </label>
+                            <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last Name" required="" autofocus="">
+                            
+                            <label for="username" class="sr-only">Username:</label>
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Username" required="" autofocus="">
+                            
+                            <label for="email" class="sr-only">Email Address:</label>
+                            <input name="email" id="email" class="form-control" placeholder="Email address" required="" autofocus="" type="email">
+                            
+                            <label for="password" class="sr-only">Password:</label>
+                            <input name="password" id="password" class="form-control" placeholder="Password" required="" type="password">
+                            
+                            <label for="password2" class="sr-only">Confirm Password:</label>
+                            <input name="password2" id="password2" class="form-control" placeholder="Repeat Password" required="" type="password">
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
 
 <script type="text/javascript" src="/assets/javascript/login.js"></script>
 

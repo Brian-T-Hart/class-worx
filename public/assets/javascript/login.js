@@ -1,4 +1,12 @@
 $(document).ready(function () {
+    $("#loginLink").click(function () {
+        $("#registerDiv").hide();
+        $("#loginDiv").show();
+    });
+    $("#registerLink").click(function () {
+        $("#loginDiv").hide();
+        $("#registerDiv").show();
+    });
     $("#signinForm").submit(function (e) {
         e.preventDefault();
         console.log(this.action);

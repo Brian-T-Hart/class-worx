@@ -435,31 +435,4 @@ router.post('/reset/:id', (req, res, next) => {
     }
 });
 
-router.get('/exampleImage', (req, res, next) => {
-    if (req.isAuthenticated()) {
-        console.log('posting image');
-        cloudinary.v2.uploader.upload("http://coloringpages2015.com/wp-content/uploads/2014/05/barbie-mermaid-tale-coloring-pages-zuma-and-merliah-playing-429598.jpg", { public_id: "student_id" },
-            function (error, result) { 
-                if (error) {
-                    console.log(error)
-                }
-                else {
-                    console.log("result ", result);
-                    console.log("secure_url ", result.secure_url)
-                }
-            })        
-            .then(function (results) {
-                // console.log('picture posted', results);
-                // res.redirect("/exampleImage");
-                // res.json(results);
-                var imageInfo = { image: results }
-                res.render('exampleImage', imageInfo);
-            })
-    }
-    else {
-        res.redirect("/account/login"); 
-    }
-});
-
-
 module.exports = router;

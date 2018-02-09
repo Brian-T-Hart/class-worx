@@ -7,13 +7,13 @@
 #navLogo {
   color: #fff;
   font-family: "Georgia", Times, serif;
-  font-size: 40px;
+  font-size: 36px;
   letter-spacing: .1em;
-  margin: 4px 0px 0px 40px;
+  margin: 4px 0px 0px 20px;
 }
 
 #navLogoX {
-  height: 38px;
+  height: 36px;
   width: auto;
   margin-bottom: 10px;
 }

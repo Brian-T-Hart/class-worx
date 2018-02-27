@@ -4,8 +4,7 @@
         cloudinary.openUploadWidget({
             cloud_name: 'dfonttj4w',
             upload_preset: 'firv62ul',
-            sources: ['local', 'url', 'image_search', 'facebook', 'instagram', 'dropbox', 'google_photos'],
-            google_api_key: 'AIzaSyDRRirpUnekYH1rsUex4tYovcQCWrEeQIM'
+            sources: ['local', 'url', 'facebook', 'instagram', 'dropbox', 'google_photos']
         },
             function (error, result) {
                 if (error) {

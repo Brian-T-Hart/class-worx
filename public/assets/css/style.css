@@ -1,206 +1,192 @@
-#loginNavbar {
-  background-color: #333a40;
-  height: 80px;
-  margin-bottom: 80px;
-}
-
-#navLogo {
-  color: #fff;
-  font-family: "Georgia", Times, serif;
-  font-size: 36px;
-  letter-spacing: .1em;
-  margin: 4px 0px 0px 20px;
-}
-
-#navLogoX {
-  height: 36px;
-  width: auto;
-  margin-bottom: 10px;
-}
-
-/* #loginLogo {
-  width: 50%;
-  height: auto;
-  display: block;
-  margin: auto;
-} */
-
-.form-signin {
-    font-family: Georgia, "Times New Roman", serif;
-    font-weight: normal;
-    letter-spacing: .1em;
-    background-color: white;
-    max-width: 400px;
-    padding: 10px 30px 30px 30px;
-    margin: auto;
-}
-
-.form-signin-heading {
-  color: #333;
-}
-
-.required-text-label {
-  font-size: 12px;
-  font-style: italic;
-}
-
-#loginEmail, #loginPassword, .registerInput {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-#loginSubmitBtn, #registerSubmitBtn {
-  width: 100px;
-  border-radius: 0px;
-  background-color: #38bad8;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-#registerLink, #loginLink {
-  padding: 10px;
-}
-
-#loginErrorMessage {
-  color: #ff0000;
-  font-size: 16px;
-  text-align: center;
-  margin: 10px 0px 20px 0px;
-}
-
-.splash {
-  background-color: #f1f1f1;
-  /* background-image: url("/assets/images/class.png");
-  background-size: cover; */
-}
-
-body {
-  font-family: sans-serif;  
-  padding-top: 54px;
-}
-
-.jumbotron {
-  padding: 32px;
-  margin-top: 15px;
-}
-
-tr, th {
-    text-align: center;
-}
-
-th, a {
-  color: #000;
-  font-size: 16px;
-}
-
-.student-row {
-    background: pink;
-}
-
-.test {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    background-color: rgba(86,61,124,.15);
-    outline: 1px solid black;
-}
-
-* { box-sizing: border-box; }
-
-.grid {
-  background: #FDD;
-  background: hsla(45, 100%, 40%, 0.2);
-  max-width: 520px;
-}
-
-/* clearfix */
-.grid:after {
-  content: ' ';
-  display: block;
-  clear: both;
-}
-
-.item {
-  width: 40px;
-  height: 40px;
-  float: left;
-  background: #C09;
-  border: 4px solid #333;
-  border-color: hsla(0, 0%, 0%, 0.3);
-}
-
-.item:hover {
-  border-color: white;
-  cursor: move;
-}
-
-.item.w2 { width:   80px; background: #9C0; }
-.item.h2 { height:  80px; background: #0C9; }
-.item.h4 { height: 160px; background: #C90; }
-.item.w4 { width:  160px; background: #90C; }
-
-.item.is-dragging,
-.item.is-positioning-post-drag {
-  border-color: white;
-  background: #09F;
-  z-index: 2;
+* {
+	box-sizing: border-box;
 }
 
 a, #loginLink, #registerLink {
-  cursor: pointer;
+	cursor: pointer;
+}
+
+a, th {
+	color: #000;
+	font-size: 16px;
+}
+
+body {
+	font-family: sans-serif;
+	padding-top: 54px;
 }
 
 button {
-  font-size: 20px;
-  cursor: pointer;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+th, tr {
+	text-align: center;
 }
 
 .btn {
-  font-size: 14px;
+	font-size: 14px;
 }
 
 .btn-secondary {
-  margin: 1px;
-}
-
-#editClassBtn, #resetBtn {
-  background: none;
-  font-size: 12px;
-}
-
-.icon {
- max-height: 90%;
- max-width: 90%;
-}
-
-#iconImageBtn {
-  height: 70px;
-  width: 70px;
-  border: none;
-  background: none;
+	margin: 1px;
 }
 
 .centerBlock {
-  display: table;
-  margin: auto;
+	display: table;
+	margin: auto;
 }
 
-/* #nav-home, #nav-profile {
-  max-width: 500px;
-} */
-
-#nav-home, #nav-tabContent, #myTab, .nav {
-  max-width: 500px;
+.form-signin {
+	background-color: #FFF;
+	font-family: Georgia, "Times New Roman", serif;
+	font-weight: normal;
+	letter-spacing: 0.1em;
+	margin: auto;
+	max-width: 400px;
+	padding: 10px 30px 30px;
 }
 
-#nav-home, #nav-home-tab {
-  background-color:white;
+.form-signin-heading {
+	color: #333;
 }
 
-#nav-profile-tab, #nav-profile {
-  background-color: #f0f0f0;
+.icon {
+	max-height: 90%;
+	max-width: 90%;
+}
+
+.item {
+	background: #C09;
+	border: 4px solid #333;
+	border-color: hsla(0, 0%, 0%, 0.3);
+	float: left;
+	height: 40px;
+	width: 40px;
+}
+
+.item:hover {
+	border-color: #FFF;
+	cursor: move;
+}
+
+.item.h2 {
+	background: #0C9;
+	height: 80px;
+}
+
+.item.h4 {
+	background: #C90;
+	height: 160px;
+}
+
+.item.w2 {
+	background: #9C0;
+	width: 80px;
+}
+
+.item.w4 {
+	background: #90C;
+	width: 160px;
+}
+
+.item.is-dragging, .item.is-positioning-post-drag {
+	background: #09F;
+	border-color: #FFF;
+	z-index: 2;
+}
+
+.jumbotron {
+	margin-top: 15px;
+	padding: 32px;
+}
+
+.nav, #myTab, #nav-home, #nav-tabContent {
+	max-width: 500px;
+}
+
+.registerInput, #loginEmail, #loginPassword {
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.required-text-label {
+	font-size: 12px;
+	font-style: italic;
+}
+
+.splash {
+	background-color: #F1F1F1;
+}
+
+.test {
+	background-color: rgba(86, 61, 124, 0.15);
+	outline: 1px solid #000;
+	padding-bottom: 0.75rem;
+	padding-top: 0.75rem;
+}
+
+#editClassBtn, #resetBtn {
+	background: none;
+	font-size: 12px;
 }
 
 #editColumn {
-  width: 100px;
+	width: 100px;
+}
+
+#iconImageBtn {
+	background: none;
+	border: none;
+	height: 70px;
+	width: 70px;
+}
+
+#loginErrorMessage {
+	color: #F00;
+	font-size: 16px;
+	margin: 10px 0 20px;
+	text-align: center;
+}
+
+#loginLink, #registerLink {
+	padding: 10px;
+}
+
+#loginNavbar {
+	background-color: #333A40;
+	height: 80px;
+	margin-bottom: 80px;
+}
+
+#loginSubmitBtn, #registerSubmitBtn {
+	background-color: #38BAD8;
+	border-radius: 0;
+	color: #FFF;
+	font-size: 18px;
+	font-weight: bold;
+	width: 100px;
+}
+
+#navLogo {
+	color: #FFF;
+	font-family: "Georgia", Times, serif;
+	font-size: 36px;
+	letter-spacing: 0.1em;
+	margin: 4px 0 0 20px;
+}
+
+#navLogoX {
+	height: 36px;
+	margin-bottom: 10px;
+	width: auto;
+}
+
+#nav-home, #nav-home-tab {
+	background-color: #FFF;
+}
+
+#nav-profile, #nav-profile-tab {
+	background-color: #F0F0F0;
 }

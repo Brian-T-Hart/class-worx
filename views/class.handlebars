@@ -1,124 +1,169 @@
 <body>
-    <!-- Navbar -->
-    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" id="home-button" href="/dashboard">Home</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/students">Students
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">{{students.0.schedules.0.class.teacher.teacher_userName}}</a>
-                    </li>
-                    <li id="logoff">
-                        <a class="nav-link" href="/account/logout">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+	<!-- Navbar -->
+	<nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" id="home-button" href="/dashboard">Home</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-    <br>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="/students">Students
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
 
-    <!-- Page Content -->
-    <div class="container">
-        <div class="row">
-            <h1 class="col-10">List of Students</h1>
-            <span class="col-2">
-                <form action="/newStudent" method="GET" type="hidden">
-                    <button type="submit" id="add-student" class="pull-right btn btn-primary">Add Student</button>
-                </form>
-            </span>
-        </div>
-    </div>
+					<li class="nav-item">
+						<a class="nav-link" href="#">{{students.0.schedules.0.class.teacher.teacher_userName}}</a>
+					</li>
 
-    <div class="container">
-        <div class="jumbotron">
-            <div class="row">
-                <div class="col-12">
-                    <table class="table table-striped table-responsive">
-                        <thead>
-                            <tr>
-                                <th>Picture</th>
-                                <th>Name</th>
-                                <th>Points</th>
-                                <th>Hall Pass</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- begin placeholder row 1 element-->
-                            {{#each students}} {{#if this.student_active}}
-                            <tr>
-                                <td>
-                                    <!-- Trigger the modal with a button -->
-                                    <button type="button" data-toggle="modal" data-target="#studentModal" +{{this.student_id}}>
-                                        <img class="icon img-responsive" src="/assets/images/portrait.png" alt="">
-                                    </button>
+					<li id="logoff">
+						<a class="nav-link" href="/account/logout">Logout</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="studentModal" + {{this.student_id}} role="dialog">
-                                        <div class="modal-dialog">
+	<br>
 
-                                            <!-- Modal content-->
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title">{{this.student_firstName}}&nbsp;{{this.student_lastName}}</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <img class="img-responsive" src="/assets/images/portrait.png" alt="">
-                                                    <p id="studentGender">Gender: {{this.student_gender}}</p>
-                                                    <p id="studentGrade">Grade: {{this.student_gradeLevel}}</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>{{this.student_firstName}} &nbsp; {{this.student_lastName}}</td>
-                                    <td>
-                                        <h4 id="student-points">
-                                            Score: {{this.student_score}}
-                                        </h4>
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            <form action="api/{{this.student_id}}/1" method="put">
-                                                <button type="submit" name="increment1" class="btn btn-secondary">+1</button>
-                                            </form>
-                                            <form action="/api/{{this.student_id}}/10" method="put">
-                                                <button type="submit" name="increment10" class="btn btn-secondary">+10</button>
-                                            </form>
-                                            <form action="api/{{this.student_id}}/-1" method="put">
-                                                <button type="submit" name="decrement" class="btn btn-secondary">-1</button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <h4 id="hall-pass">
-                                            Hall Passes: {{this.student_hallPass}}
-                                        </h4>
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button type="button" class="btn btn-secondary {{this.student_id}}">+1</button>
-                                            <button type="button" class="btn btn-secondary">-1</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!--end Placeholder row1-->
-                                {{/if}}
-                            {{/each}}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- Page Content -->
+	<div class="container">
+		<div class="row">
+			<h1 class="col-10">
+				List of Students
+			</h1>
+
+			<span class="col-2">
+				<form action="/newStudent" method="GET" type="hidden">
+					<button type="submit" id="add-student" class="pull-right btn btn-primary">
+						Add Student
+					</button>
+				</form>
+			</span>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="jumbotron">
+			<div class="row">
+				<div class="col-12">
+					<table class="table table-striped table-responsive">
+						<thead>
+							<tr>
+								<th>Picture</th>
+								<th>Name</th>
+								<th>Points</th>
+								<th>Hall Pass</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<!-- begin placeholder row 1 element-->
+							{{#each students}}
+								{{#if this.student_active}}
+								<tr>
+									<td>
+										<!-- Trigger the modal with a button -->
+										<button type="button" data-toggle="modal" data-target="#studentModal" +{{this.student_id}}>
+											<img class="icon img-responsive" src="/assets/images/portrait.png" alt="">
+										</button>
+
+										<!-- Modal -->
+										<div class="modal fade" id="studentModal" + {{this.student_id}} role="dialog">
+											<div class="modal-dialog">
+
+												<!-- Modal content-->
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal">
+															&times;
+														</button>
+
+														<h4 class="modal-title">{{this.student_firstName}}&nbsp;
+															{{this.student_lastName}}
+														</h4>
+													</div>
+
+													<div class="modal-body">
+														<img class="img-responsive" src="/assets/images/portrait.png" alt="">
+
+														<p id="studentGender">
+															Gender: {{this.student_gender}}
+														</p>
+
+														<p id="studentGrade">
+															Grade: {{this.student_gradeLevel}}
+														</p>
+													</div>
+
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">
+															Close
+														</button>
+													</div>
+												</div>
+											</div>
+									</td>
+
+									<td>
+										{{this.student_firstName}} &nbsp; {{this.student_lastName}}
+									</td>
+
+									<td>
+										<h4 id="student-points">
+											Score: {{this.student_score}}
+										</h4>
+
+										<div class="btn-group" role="group" aria-label="Basic example">
+											<form action="api/{{this.student_id}}/1" method="put">
+												<button type="submit" name="increment1" class="btn btn-secondary">
+													+1
+												</button>
+											</form>
+
+											<form action="/api/{{this.student_id}}/10" method="put">
+												<button type="submit" name="increment10" class="btn btn-secondary">
+													+10
+												</button>
+											</form>
+
+											<form action="api/{{this.student_id}}/-1" method="put">
+												<button type="submit" name="decrement" class="btn btn-secondary">
+													-1
+												</button>
+											</form>
+										</div>
+									</td>
+
+									<td>
+										<h4 id="hall-pass">
+											Hall Passes: {{this.student_hallPass}}
+										</h4>
+
+										<div class="btn-group" role="group" aria-label="Basic example">
+											<button type="button" class="btn btn-secondary {{this.student_id}}">
+												+1
+											</button>
+
+											<button type="button" class="btn btn-secondary">
+												-1
+											</button>
+										</div>
+									</td>
+								</tr>
+								<!--end Placeholder row1-->
+								{{/if}}
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 
 {{!-- </html> --}}

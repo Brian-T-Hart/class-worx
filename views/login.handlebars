@@ -39,7 +39,8 @@
 
         <div id="registerDiv" class="row" style="display: none">
             <div class="col-12">
-                <form class="form-signin" action="/account/signup" method="post">
+                <form action="/account/signup" class="form-signin" id="registerForm" method="post">
+                    <h5 id="registerErrorMessage"></h5>
                     <h5 class="form-signin-heading">Create an Account</h5>
                     <span class="required-text-label" tabindex="0" role="text">All fields are required</span>
                     <label for="firstName" class="sr-only">First Name:</label>
